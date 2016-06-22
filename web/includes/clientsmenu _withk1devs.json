@@ -1,0 +1,1444 @@
+{
+    "ul": [
+        {
+            "h3": "RUE DU COMMERCE",
+            "menus": "RDC",
+            "client": "RDC",
+            "base": "rdc",
+            "li": [
+                {
+                    "href": "index",
+                    "label": "Word To XML"
+                },
+                {
+                    "href": "xml",
+                    "label": "Upload And View XML"
+                }
+            ]
+        },
+        {
+            "h3": "GOD SAVE THE KIDS",
+            "menus": "GSTK_MENU",
+            "client": "GSTK",
+            "base": "god-save-the-kids",
+            "li": [
+                {
+                    "href": "index",
+                    "label": "Word To Excel Dev"
+                }
+            ]
+        },
+        {
+            "h3": "COPCOPINE",
+            "menus": "COPCOPINE_MENU",
+            "client": "COPCOPINE",
+            "base": "copcopine",
+            "li": [
+                {
+                    "href": "upload",
+                    "label": "Upload Writer File"
+                },
+                {
+                    "href": "doublon",
+                    "label": "Doublons Check"
+                }
+            ]
+        },
+        {
+            "h3": "DECATHLON",
+            "menus": "DECATHLON_MENU",
+            "client": "DECATHLON",
+            "base": "decathlon",
+            "li": [
+                {
+                    "href": "index",
+                    "label": "Excel to XML"
+                },
+                {
+                    "href": "index2",
+                    "label": "Excel to XML - Dev2"
+                }
+            ]
+        },
+        {
+            "h3": "LE PARISIEN",
+            "menus": "LEPARISIEN_MENU",
+            "client": "LEPARISIEN",
+            "base": "le-parisien",
+            "li": [
+                {
+                    "href": "index1",
+                    "label": "Le Parisien - Pr&#233;noms"
+                },
+                {
+                    "href": "index11",
+                    "label": "Le Parisien - Pr&#233;noms - Dev2"
+                },
+                {
+                    "href": "copydata",
+                    "label": "Le Parisien - Pr&#233;noms/Recette(copy doc to excel)"
+                },
+                {
+                    "href": "index2",
+                    "label": "Le Parisien - Pr&#233;noms/Recette(category)"
+                },
+                {
+                    "href": "index",
+                    "label": "Le Parisien - Pr&#233;noms (With Doc)"
+                },
+                {
+                    "href": "recette1",
+                    "label": "Le Parisien - Recettes"
+                },
+                {
+                    "href": "recette",
+                    "label": "Le Parisien - Recettes (With Doc)"
+                }
+            ]
+        },
+        {
+            "h3": "LEROY MERLIN",
+            "menus": "LEROYMERLIN_MENU",
+            "client": "LEROYMERLIN",
+            "base": "leroymerlin",
+            "li": [
+                {
+                    "href": "index",
+                    "label": "Fichier r&#233;dacteur"
+                },
+                {
+                    "href": "reference",
+                    "label": "View Pictures on URL"
+                }
+            ]
+        },
+        {
+            "h3": "KOOKA&#239;",
+            "menus": "KOOKAI_MENU",
+            "client": "KOOKAI",
+            "base": "kookai",
+            "li": [
+                {
+                    "href": "index",
+                    "label": "Fichier r&#233;dacteur"
+                },
+                {
+                    "href": "reference",
+                    "label": "View Pictures on URL"
+                },
+                {
+                    "href": "index1",
+                    "label": "Tag(strong) update"
+                }
+            ]
+        },
+        {
+            "h3": "REZIDOR",
+            "menus": "REZIDOR_MENU",
+            "client": "REZIDOR",
+            "base": "rezidor",
+            "li": [
+                {
+                    "href": "copydata",
+                    "label": "Rezidor - XML files of PPTX to XLS"
+                }
+            ]
+        },
+        {
+            "h3": "LAHALLE",
+            "menus": "LAHALLE_MENU",
+            "client": "LAHALLE",
+            "base": "la-halle",
+            "li": [
+                {
+                    "href": "shoe",
+                    "label": "Fichier r&#233;dacteur(shoe)"
+                },
+                {
+                    "href": "clothe",
+                    "label": "Fichier r&#233;dacteur(clothe)"
+                },
+                {
+                    "href": "shoeref",
+                    "label": "View Pictures on URL(shoe)"
+                },
+                {
+                    "href": "clotheref",
+                    "label": "View Pictures on URL(clothe)"
+                }
+            ]
+        },
+        {
+            "h3": "KUJJUK",
+            "menus": "KUJJUK_MENU",
+            "client": "KUJJUK",
+            "base": "kujjuk",
+            "li": [
+                {
+                    "href": "index",
+                    "label": "Fichier r&#233;dacteur"
+                },
+                {
+                    "href": "reference",
+                    "label": "View Pictures on URL"
+                }
+            ]
+        },
+        {
+            "h3": "LESECHOS",
+            "menus": "LESECHOS_MENU",
+            "client": "LESECHOS",
+            "base": "lesechos",
+            "li": [
+                {
+                    "href": "dev_1",
+                    "label": "XLSX->XML->Test->TAR.GZ"
+                }
+            ]
+        },
+		{
+            "h3": "IKKS",
+            "menus": "IKKS_MENU",
+            "client": "IKKS",
+            "base": "ikks",
+            "li": [
+                {
+                    "href": "index",
+                    "label": "Fichier r&#233;dacteur (Dev 1)"
+                },
+                {
+                    "href": "index1",
+                    "label": "Fichier r&#233;dacteur (Dev 2)"
+                },
+                {
+                    "href": "index2",
+                    "label": "Fichier r&#233;dacteur (Dev 3)"
+                },
+                {
+                    "href": "reference",
+                    "label": "View Pictures on URL"
+                }
+            ]
+        },
+        {
+            "h3": "CLARKS",
+            "menus": "CLARKS_MENU",
+            "client": "CLARKS",
+            "base": "clarks",
+            "li": [
+                {
+                    "href": "url",
+                    "label": "Fichier r&#233;dacteur"
+                },
+                {
+                    "href": "url2",
+                    "label": "Clarks dev 2"
+                }
+            ]
+        },
+        {
+            "h3": "KORBEN2",
+            "menus": "carbon_menu_style",
+            "ul": [
+                {
+                    "h3": "LACITY",
+                    "menus": "LACITY_MENU",
+                    "client": "LACITY",
+                    "base": "korben2",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                },
+                {
+                    "h3": "CACHECACHE",
+                    "menus": "CACHECACHE_MENU",
+                    "client": "CACHECACHE",
+                    "base": "korben2",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                },
+                {
+                    "h3": "BONOBO",
+                    "menus": "BONOBO_MENU",
+                    "client": "BONOBO",
+                    "base": "korben2",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        },
+                        {
+                            "href": "index",
+                            "label": "La redoute",
+                            "base": "bonobo"
+                        }
+                    ]
+                },
+                {
+                    "h3": "BONOBOUK",
+                    "menus": "BONOBOUK_MENU",
+                    "client": "BONOBO_UK",
+                    "base": "korben2",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                },
+                {
+                    "h3": "SCOTTAGE2",
+                    "menus": "SCOTTAGE2_MENU",
+                    "client": "SCOTTAGE2",
+                    "base": "korben2",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                },
+                {
+                    "h3": "MORGAN",
+                    "menus": "MORGAN_MENU",
+                    "client": "MORGAN",
+                    "base": "korben2",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                },
+                {
+                    "h3": "MORGANUK",
+                    "menus": "MORGANUK_MENU",
+                    "client": "MORGAN_UK",
+                    "base": "korben2",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                },
+                {
+                    "h3": "MORGANHOF",
+                    "menus": "MORGANHOF_MENU",
+                    "client": "MORGAN_HOF",
+                    "base": "korben2",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "h3": "KORBEN",
+            "menus": "carbon_menu_style",
+            "ul": [
+                {
+                    "h3": "LA CITY",
+                    "menus": "LACITY_MENU",
+                    "client": "LACITY",
+                    "base": "lacity",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                },
+                {
+                    "h3": "CACHE CACHE",
+                    "menus": "CACHECACHE_MENU",
+                    "client": "CACHECACHE",
+                    "base": "korben",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                },
+                {
+                    "h3": "BREAL",
+                    "menus": "BREAL_MENU",
+                    "client": "BREAL",
+                    "base": "korben",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                },
+                {
+                    "h3": "BONOBO",
+                    "menus": "BONOBO_MENU",
+                    "client": "BONOBO",
+                    "base": "korben",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        },
+                        {
+                            "href": "index",
+                            "label": "La redoute",
+                            "base": "bonobo"
+                        }
+                    ]
+                },
+                {
+                    "h3": "BONOBO UK",
+                    "menus": "BONOBOUK_MENU",
+                    "client": "BONOBO_UK",
+                    "base": "korben",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                },
+                {
+                    "h3": "SCOTTAGE",
+                    "menus": "SCOTTAGE_MENU",
+                    "client": "SCOTTAGE",
+                    "base": "korben",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                },
+                {
+                    "h3": "SCOTTAGE 2",
+                    "menus": "SCOTTAGE2_MENU",
+                    "client": "SCOTTAGE2",
+                    "base": "korben",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                },
+                {
+                    "h3": "MORGAN",
+                    "menus": "MORGAN_MENU",
+                    "client": "MORGAN",
+                    "base": "korben",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                },
+                {
+                    "h3": "MORGAN UK",
+                    "menus": "MORGANUK_MENU",
+                    "client": "MORGAN_UK",
+                    "base": "korben",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                },
+                {
+                    "h3": "ARMAND THIERY",
+                    "menus": "ARMAND_THIERY_MENU",
+                    "client": "ARMAND_THIERY",
+                    "base": "korben",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                },
+                {
+                    "h3": "TOSCANE",
+                    "menus": "TOSCANE_MENU",
+                    "client": "TOSCANE",
+                    "base": "korben",
+                    "li": [
+                        {
+                            "href": "upload-source",
+                            "label": "Upload Source"
+                        },
+                        {
+                            "href": "folder-list",
+                            "label": "Fichier r&#233;dacteur"
+                        },
+                        {
+                            "href": "index",
+                            "label": "View Pictures On URL"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "h3": "ANDRE",
+            "menus": "ANDRE_MENU",
+            "client": "ANDRE",
+            "base": "andre",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				},
+				{
+					"href": "ref_check",
+					"label": "Check references"
+				},
+				{
+					"href": "reference",
+					"label": "View Pictures On URL"
+				}
+			]
+        },
+        {
+            "h3": "KIABI",
+            "menus": "KIABI_MENU",
+            "client": "KIABI",
+            "base": "kiabi",
+			"li": [
+				{
+					"href": "index",
+					"label": "Generate xml file"
+				}
+			]
+        },
+        {
+            "h3": "CAROLL",
+            "menus": "CAROLL_MENU",
+            "client": "CAROLL",
+            "base": "caroll",
+			"li": [
+				{
+					"href": "upload-caroll-source",
+					"label": "Upload prise de notes file"
+				},
+				{
+					"href": "upload-ep-source",
+					"label": "Upload r&eacute;f&eacute;rentiel file"
+				},
+				{
+					"href": "folder-list",
+					"label": "Fichier r&#233;dacteur"
+				},
+				{
+					"href": "create-xml",
+					"label": "CAROLL XML"
+				},
+				{
+					"href": "caroll_cron",
+					"label": "CAROLL New Source Cron"
+				},
+				{
+					"href": "reference",
+					"label": "View Pictures on URL"
+				},
+				{
+					"href": "check_reference",
+					"label": "CAROLL Reference searching"
+				}
+			]
+        },
+        {
+            "h3": "LEBONMARCHE",
+            "menus": "LEBONMARCHE_MENU",
+            "client": "LEBONMARCHE",
+            "base": "lebonmarche",
+			"li": [
+				{
+					"href": "upload-ep-source",
+					"label": "Upload prise de notes file"
+				},
+				{
+					"href": "lebon_ref",
+					"label": "Update price de notes file"
+				},
+				{
+					"href": "upload-lbm-source",
+					"label": "Upload r&eacute;f&eacute;rentiel file"
+				},
+				{
+					"href": "folder-list",
+					"label": "Fichier r&#233;dacteur"
+				},
+				{
+					"href": "lbm_cron_newsource",
+					"label": "LBM New Source Cron"
+				},
+				{
+					"href": "lbm_cron_xls3",
+					"label": "LBM XLS3 Cron"
+				},
+				{
+					"href": "reference",
+					"label": "View Pictures on URL"
+				},
+				{
+					"href": "check_reference",
+					"label": "LBM Reference searching"
+				}
+			]
+        },
+        {
+            "h3": "BASH",
+            "menus": "BASH_MENU",
+            "client": "BASH",
+            "base": "bash",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				},
+				{
+					"href": "reference",
+					"label": "View Pictures on URL"
+				},
+				{
+					"href": "sentence",
+					"label": "Sentence dev"
+				},
+				{
+					"href": "ref_check",
+					"label": "Check reference"
+				}
+			]
+        },
+        {
+            "h3": "MISTER SPECX",
+            "menus": "MISTERSPECX_MENU",
+            "client": "MISTERSPECX",
+            "base": "misterspecx",
+			"li": [
+				{
+					"href": "index",
+					"label": "Mister specx highlight html tags"
+				}
+			]
+        },
+        {
+            "h3": "CHEVIGNON",
+            "menus": "CHEVIGNON_MENU",
+            "client": "CHEVIGNON",
+            "base": "chevignon",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				},
+				{
+					"href": "reference",
+					"label": "View Pictures on URL"
+				}
+			]
+        },
+        {
+            "h3": "TRANSLATION",
+            "menus": "TRANSLATION_MENU",
+            "client": "TRANSLATION",
+            "base": "translation",
+			"li": [
+				{
+					"href": "storage",
+					"label": "Data storage"
+				},
+				{
+					"href": "retrieval",
+					"label": "Data retrieval"
+				},
+				{
+					"href": "edit",
+					"label": "Data edit"
+				}
+			]
+        },
+        {
+            "h3": "CDC",
+            "menus": "CDC_MENU",
+            "client": "CDC",
+            "base": "cdc",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				}
+			]
+        },
+        {
+            "h3": "EBOOKERS",
+            "menus": "EBOOKERS_MENU",
+            "client": "EBOOKERS",
+            "base": "ebookers",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur - dev1"
+				},
+				{
+					"href": "index2",
+					"label": "Fichier r&#233;dacteur - dev2"
+				},
+				{
+					"href": "index3",
+					"label": "Fichier r&#233;dacteur - dev3"
+				}
+			]
+        },
+        {
+            "h3": "NAKAMURA",
+            "menus": "NAKAMURA_MENU",
+            "client": "NAKAMURA",
+            "base": "nakamura",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				},
+				{
+					"href": "index1",
+					"label": "Merging cells"
+				},
+				{
+					"href": "reference",
+					"label": "View Pictures on URL"
+				}
+			]
+        },
+        {
+            "h3": "NAF NAF",
+            "menus": "NAFNAF_MENU",
+            "client": "NAFNAF",
+            "base": "nafnaf",
+			"li": [
+				{
+					"href": "index1",
+					"label": "Fichier r&#233;dacteur"
+				},
+				{
+					"href": "reference",
+					"label": "View Pictures on URL"
+				}
+			]
+        },
+        {
+            "h3": "FTV",
+            "menus": "FTV_MENU",
+            "client": "FTV",
+            "base": "ftv",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				}
+			]
+        },
+        
+        {
+            "h3": "CLARINS",
+            "menus": "CLARINS_MENU",
+            "client": "CLARINS",
+            "base": "clarins",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				},
+				{
+					"href": "tag",
+					"label": "CLARINS - Traduction des mots-cl&#233;s"
+				},
+				{
+					"href": "kwcheck",
+					"label": "CLARINS - Keyword check"
+				}
+			]
+        },
+        {
+            "h3": "BURTON",
+            "menus": "BURTON_MENU",
+            "client": "BURTON",
+            "base": "burton",
+			"li": [
+				{
+					"href": "index",
+					"label": "BURTON SOURCE XLS"
+				},
+				{
+					"href": "writer_xls_upload",
+					"label": "BURTON Writer XLS =>BURTON Modified XLS"
+				}
+			]
+        },
+        {
+            "h3": "SANMARINA",
+            "menus": "SANMARINA_MENU",
+            "client": "SANMARINA",
+            "base": "sanmarina",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				},
+				{
+					"href": "merge",
+					"label": "San Marina - fusion des cellules avec Balises"
+				},
+				{
+					"href": "reference",
+					"label": "View Pictures on URL"
+				}
+			]
+        },
+        {
+            "h3": "NEW MAN",
+            "menus": "NEWMAN_MENU",
+            "client": "NEWMAN",
+            "base": "newman",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				},
+				{
+					"href": "reference",
+					"label": "View Pictures on URL"
+				}
+			]
+        },
+        {
+            "h3": "MONOPRIX",
+            "menus": "MONOPRIX_MENU",
+            "client": "MONOPRIX",
+            "base": "monoprix",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				}
+			]
+        },
+        {
+            "h3": "COPY PASTE",
+            "menus": "COPYPASTE_MENU",
+            "client": "COPYPASTE",
+            "base": "copypaste",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				}
+			]
+        },
+        {
+            "h3": "COSMOPARIS",
+            "menus": "COSMOPARIS_MENU",
+            "client": "COSMOPARIS",
+            "base": "cosmoparis",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				},
+				{
+					"href": "reference",
+					"label": "View Pictures on URL"
+				}
+			]
+        },
+        {
+            "h3": "ACCESSORIE DIFFUSION",
+            "menus": "ACCESSORIE_DIFFUSION_MENU",
+            "client": "ACCESSORIE_DIFFUSION",
+            "base": "accessoire-diffusion",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				},
+				{
+					"href": "reference",
+					"label": "View Pictures on URL"
+				}
+			]
+        },
+        {
+            "h3": "PAGES JAUNES",
+            "menus": "PAGESJAUNES_MENU",
+            "client": "PAGESJAUNES",
+            "base": "pagesjaunes",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				}
+			]
+        },
+        {
+            "h3": "BOULANGER",
+            "menus": "BOULANGER_MENU",
+            "client": "BOULANGER",
+            "base": "boulanger",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				},
+				{
+					"href": "imagexls",
+					"label": "Fichier r&#233;dacteur (with images)"
+				}
+			]
+        },
+        {
+            "h3": "INLINE COMPARE",
+            "menus": "INLINE_COMPARE_MENU",
+            "client": "INLINE_COMPARE",
+            "base": "inline-compare",
+			"li": [
+				{
+					"href": "index",
+					"label": "Inline compare dev"
+				}
+			]
+        },
+        {
+            "h3": "MORGAN",
+            "menus": "MORGANCSV_MENU",
+            "client": "MORGANCSV",
+            "base": "morgan",
+			"li": [
+				{
+					"href": "index",
+					"label": "Morgan CSV & XLS Compare"
+				}
+			]
+        },
+        {
+            "h3": "ODIGEO",
+            "menus": "ODIGEO_MENU",
+            "client": "ODIGEO",
+            "base": "odigeo",
+			"li": [
+				{
+					"href": "index",
+					"label": "ODIGEO XLS"
+				},
+				{
+					"href": "template1",
+					"label": "TEMPLATE 1 XLS"
+				}
+			]
+        },
+        {
+            "h3": "MISTER AUTO",
+            "menus": "MISTER_AUTO_MENU",
+            "client": "MISTER_AUTO",
+            "base": "mister-auto",
+			"li": [
+				{
+					"href": "structure",
+					"label": "Mister Auto structure dev"
+				},
+				{
+					"href": "index",
+					"label": "Mister Auto XLS => Mister Auto Modified XLS"
+				},
+				{
+					"href": "auto_new",
+					"label": "Mister Auto XLS NEW DEV"
+				}
+			]
+        },
+        {
+            "h3": "EXPEDIA",
+            "menus": "EXPEDIA_MENU",
+            "client": "EXPEDIA",
+            "base": "expedia",
+			"li": [
+				{
+					"href": "index",
+					"label": "Expedia Translation Dev"
+				},
+				{
+					"href": "translation",
+					"label": "Expedia Multifile Translation Dev"
+				},
+				{
+					"href": "writer",
+					"label": "Expedia Writer Dev"
+				}
+			]
+        },
+        {
+            "h3": "HOTELS.COM",
+            "menus": "HOTELS_MENU",
+            "client": "HOTELS",
+            "base": "hotels",
+			"li": [
+				{
+					"href": "dev1",
+					"label": "Hotels XLS to Docs"
+				},
+                {
+					"href": "dev2",
+					"label": "Hotels Docs Zip to Xlsx"
+				}
+				,
+                {
+					"href": "dev2check",
+					"label": "Hotels Check Docs Zip to Xlsx"
+				},
+                {
+					"href": "dev3",
+					"label": "Hotels Neigbourhood XLS to Docs"
+				},
+				{
+					"href": "dev4",
+					"label": "Hotels Neigbourhood Docs Zip to Xlsx"
+				},
+                {
+					"href": "dev5",
+					"label": "Hotels Creation Xlsx > Doc"
+				}
+			]
+        },
+        {
+            "h3": "VENERE",
+            "menus": "VENERE_MENU",
+            "client": "VENERE",
+            "base": "venere",
+			"li": [
+				{
+					"href": "dev_1",
+					"label": "Venere XLS/Xlsx to Docs"
+				},
+                {
+					"href": "dev_2",
+					"label": "Venere Docs to Xlsx"
+				},
+                {
+					"href": "dev_2check",
+					"label": "Venere Check Docs to Xlsx"
+				}
+			]
+        },
+        {
+            "h3": "SEM",
+            "menus": "SEM_MENU",
+            "client": "SEM",
+            "base": "sem",
+			"li": [
+				{
+					"href": "index",
+					"label": "SEM Auto XLS => SEM Auto Modified XLS"
+				}
+			]
+        },
+        {
+            "h3": "VIAPRESSE",
+            "menus": "VIAPRESSE_MENU",
+            "client": "VIAPRESSE",
+            "base": "viapresse",
+			"li": [
+				{
+					"href": "index",
+					"label": "Viapresse XLS => CSV"
+				}
+			]
+        },
+        {
+            "h3": "NETBOOSTER",
+            "menus": "NETBOOSTER_MENU",
+            "client": "NETBOOSTER",
+            "base": "netbooster",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				}
+			]
+        },
+        {
+            "h3": "COMPTOIR DES COTONNIERS",
+            "menus": "COMPTOIR_MENU",
+            "client": "COMPTOIR",
+            "base": "comptoir",
+			"li": [
+				{
+					"href": "index",
+					"label": "Comptoir des Cotonniers Dev"
+				}
+			]
+        },
+        {
+            "h3": "IMAGE COMPRESSION",
+            "menus": "IMAGE_COMPRESSION_MENU",
+            "client": "IMAGE_COMPRESSION",
+            "base": "",
+			"li": [
+				{
+					"href": "compress",
+					"label": "IMAGE COMPRESSION DEV"
+				}
+			]
+        },
+        {
+            "h3": "AGATHA",
+            "menus": "AGATHA_MENU",
+            "client": "AGATHA",
+            "base": "agatha",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;f&#233;rentiel AGATHA"
+				}
+			]
+        },        
+        {
+            "h3": "MENLOOK",
+            "menus": "MENLOOK_MENU",
+            "client": "MENLOOK",
+            "base": "menlook",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				}
+			]
+        },
+        {
+            "h3": "CDISCOUNT",
+            "menus": "CDISCOUNT_MENU",
+            "client": "CDISCOUNT",
+            "base": "cdiscount",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				}
+			]
+        },
+        {
+            "h3": "KIOSKEA",
+            "menus": "KIOSKEA_MENU",
+            "client": "KIOSKEA",
+            "base": "kioskea",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				}
+			]
+        },
+        {
+            "h3": "TRUFFAUT",
+            "menus": "TRUFFAUT_MENU",
+            "client": "TRUFFAUT",
+            "base": "truffaut",
+			"li": [
+				{
+					"href": "excelupload",
+					"label": "Truffaut XLS => Truffaut Modified XLS"
+				},
+				{
+					"href": "base_upload1",
+					"label": "Truffaut Modified XLS => Base XLS"
+				},
+				{
+					"href": "hormonize_excel_upload",
+					"label": "Truffaut harmonization"
+				},
+				{
+					"href": "index",
+					"label": "TRUFFAUT - Dev avec Photos sur FTP"
+				},
+				{
+					"href": "reference",
+					"label": "View Pictures on URL"
+				}
+			]
+        },
+        {
+            "h3": "ARMAND THIERY",
+            "menus": "ARMAND_THIERY1_MENU",
+            "client": "ARMAND_THIERY1",
+            "base": "armand_thiery",
+			"li": [
+				{
+					"href": "excel_upload",
+					"label": "Armand Thiery CSV & XLS Compare"
+				}
+			]
+        },
+        {
+            "h3": "CELIO",
+            "menus": "CELIO_MENU",
+            "client": "CELIO",
+            "base": "celio",
+			"li": [
+				{
+					"href": "index",
+					"label": "CELIO XLS"
+				},
+				{
+					"href": "lookbook",
+					"label": "CELIO LOOK BOOKS SOURCE XLS"
+				},
+				{
+					"href": "folder-list",
+					"label": "Fichier r&#233;dacteur"
+				},				
+				{
+					"href": "reference",
+					"label": "View Pictures on URL"
+				}
+			]
+        },
+        {
+            "h3": "LIVRAISON",
+            "menus": "LIVRAISON_MENU",
+            "client": "LIVRAISON",
+            "base": "livraison",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				}
+			]
+        },
+        {
+            "h3": "LIVRAISON LP",
+            "menus": "LIVRAISON_LP_MENU",
+            "client": "LIVRAISON_LP",
+            "base": "livraisonlp",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				}
+			]
+        },
+        {
+            "h3": "GALERIES LAFAYETTE",
+            "menus": "GALERIES_LAFAYETTE_MENU",
+            "client": "GALERIES_LAFAYETTE",
+            "base": "galeries_lafayette",
+			"li": [
+				{
+					"href": "index",
+					"label": "Fichier r&#233;dacteur"
+				},
+				{
+					"href": "reference",
+					"label": "View Pictures on URL"
+				}
+			]
+        },
+        {
+            "h3": "MISCELLANEOUS",
+            "menus": "MISC_MENU",
+            "client": "MISC",
+            "base": "miscellaneous",
+			"li": [
+				{
+					"href": "copiercoller",
+					"label": "100% plagi&#233;s - Copier-coller auto"
+				},
+				{
+					"href": "tagsearch",
+					"label": "Isoler balises HTML d'un contenu"
+				},
+				{
+					"href": "wordcount",
+					"label": "Comptage de mots avec URL"
+				},
+				{
+					"href": "createlot",
+					"label": "Division de lots"
+				},
+				{
+					"href": "tagvalidation",
+					"label": "Tag validation tool"
+				},
+				{
+					"href": "grouptool",
+					"label": "Group tool"
+				},
+				{
+					"href": "xlscompare",
+					"label": "XLS Compare"
+				},
+				{
+					"href": "colswap",
+					"label": "XLSX Column Swapper"
+				}
+			]
+        }
+    ]
+}

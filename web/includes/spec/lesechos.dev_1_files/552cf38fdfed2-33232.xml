@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<quiz>
+				<infosGenerales>
+						<id>33232</id>
+						<nom>Il y a dix ans: le CAC 40 au sommet</nom>
+						<theme>Économie</theme>
+						<dateDebut>01/09/2010</dateDebut>
+						<dateFin></dateFin>
+						
+						<texteIntro>Il y a dix ans, le CAC 40 touchait un pic historique... Vous souvenez-vous du plus gros plongeon de l'indice phare ? De l'événement qui a motivé son record absolu en une séance ? Des gagnants et des perdants de cette décennie chaotique à la Bourse de Paris ?</texteIntro>
+					<texteAccroche>Ici se trouve le texte d'accroche</texteAccroche>
+					</infosGenerales>
+				
+				<visuelquiz>
+					<questions><question num="1">
+									<libelle>Combien de sociétés ont quitté le CAC 40 en dix ans ?</libelle>
+									<reponses>
+										<choix num="1" points="1">9</choix>
+										<choix num="2" points="0">2</choix>
+										<choix num="3" points="0">13</choix>
+									</reponses>
+						
+								<textelien>Consulter l'indice en cliquant ici</textelien>	       
+								<lien>http://www.lesechos.fr/economie-france/social/</lien>
+							</question><question num="2">
+									<libelle>Seules deux des dix plus grosses capitalisations du CAC 40 en septembre 2000 ont aujourd'hui un poids plus important dans l'indice. De qui s'agit-il ?</libelle>
+									<reponses>
+										<choix num="1" points="0">Total et France Télécom</choix>
+										<choix num="2" points="1">Total et BNP Paribas</choix>
+										<choix num="3" points="0">BNP Paribas et Carrefour</choix>
+									</reponses>
+						
+								<textelien>Consulter l'indice en cliquant ici</textelien>	       
+								<lien>http://www.lesechos.fr/politique-societe/politique/</lien>
+							</question><question num="3">
+									<libelle>Combien de sociétés ont réussi à se maintenir parmi les dix premières capitalisations du CAC 40 entre 2000 et 2010 ?</libelle>
+									<reponses>
+										<choix num="1" points="0">aucune</choix>
+										<choix num="2" points="1">5</choix>
+										<choix num="3" points="0">15</choix>
+									</reponses>
+						
+								<textelien>Consulter l'indice en cliquant ici</textelien>	       
+								<lien>http://www.lesechos.fr/monde/ameriques/</lien>
+							</question></questions>
+					</visuelquiz>
+						 <paliers><palier num="1">
+												<intervalMin>0</intervalMin>
+												<intervalMax>1</intervalMax>
+										<textepalier>Merci d'avoir répondu à notre quiz. Vous avez entre 0 et 1 point : Déconcentré ? Une partie de l'actualité vous a échappée ? Un conseil : jetez plus souvent un oeil sur les echos.fr ... ou retentez votre chance en cliquant ici.
+
+Et pour ne pas en rester là, retrouvez ci-dessous toutes les bonnes réponses à notre quiz.</textepalier>		
+										<chapeauresultat>Retrouvez ci-dessous les réponses détaillés du quiz.</chapeauresultat><liste><item><textequestion>Combien de sociétés ont quitté le CAC 40 en dix ans ?</textequestion>
+												<TexteReponse>Neuf sociétés présentes dans le CAC 40 en 2000 n'y sont plus aujourd'hui : TF1, Sodexho-Alliance (Sodexo), Thomson CSF (Thalès), Canal+, AGF, Casino Guichard, Equant, Valeo, Thomson Multimedia (Technicolor).</TexteReponse>
+												<textelien>En savoir plus : </textelien>
+												<lien>http://www.lesechos.fr/economie-france/social/</lien></item><item><textequestion>Seules deux des dix plus grosses capitalisations du CAC 40 en septembre 2000 ont aujourd'hui un poids plus important dans l'indice. De qui s'agit-il ?</textequestion>
+												<TexteReponse>Seuls Total et BNP Paribas ont aujourd'hui un poids plus important dans l'indice qu'en septembre 2000. Le poids de Total est passé de 11,65% à 12,27%, celui de BNP Paribas de 3,64% à 7,87%.</TexteReponse>
+												<textelien>En savoir plus : </textelien>
+												<lien>http://www.lesechos.fr/politique-societe/politique/</lien></item><item><textequestion>Combien de sociétés ont réussi à se maintenir parmi les dix premières capitalisations du CAC 40 entre 2000 et 2010 ?</textequestion>
+												<TexteReponse>Cinq sociétés ont réussi à se maintenir parmi les dix premières capitalisations du CAC 40 entre 2000 et 2010 : Total (anciennement TotalFina Elf), BNP Paribas, Sanofi-Aventis (issu de la fusion entre Sanofi-Synthelabo et Aventis), France Télécom et Carrefour.</TexteReponse>
+												<textelien>En savoir plus : </textelien>
+												<lien>http://www.lesechos.fr/monde/ameriques/</lien></item></liste></palier><palier num="2">
+												<intervalMin>1</intervalMin>
+												<intervalMax>2</intervalMax>
+										<textepalier>
+Vous avez entre 2 et 3 points : Vous êtes au courant de ce qui se passe dans le monde, certaines informations ont pu vous échapper. </textepalier>		
+										<chapeauresultat>Retrouvez ci-dessous les réponses détaillés du quiz.</chapeauresultat><liste><item><textequestion>Combien de sociétés ont quitté le CAC 40 en dix ans ?</textequestion>
+												<TexteReponse>Neuf sociétés présentes dans le CAC 40 en 2000 n'y sont plus aujourd'hui : TF1, Sodexho-Alliance (Sodexo), Thomson CSF (Thalès), Canal+, AGF, Casino Guichard, Equant, Valeo, Thomson Multimedia (Technicolor).</TexteReponse>
+												<textelien>En savoir plus : </textelien>
+												<lien>http://www.lesechos.fr/economie-france/social/</lien></item><item><textequestion>Seules deux des dix plus grosses capitalisations du CAC 40 en septembre 2000 ont aujourd'hui un poids plus important dans l'indice. De qui s'agit-il ?</textequestion>
+												<TexteReponse>Seuls Total et BNP Paribas ont aujourd'hui un poids plus important dans l'indice qu'en septembre 2000. Le poids de Total est passé de 11,65% à 12,27%, celui de BNP Paribas de 3,64% à 7,87%.</TexteReponse>
+												<textelien>En savoir plus : </textelien>
+												<lien>http://www.lesechos.fr/politique-societe/politique/</lien></item><item><textequestion>Combien de sociétés ont réussi à se maintenir parmi les dix premières capitalisations du CAC 40 entre 2000 et 2010 ?</textequestion>
+												<TexteReponse>Cinq sociétés ont réussi à se maintenir parmi les dix premières capitalisations du CAC 40 entre 2000 et 2010 : Total (anciennement TotalFina Elf), BNP Paribas, Sanofi-Aventis (issu de la fusion entre Sanofi-Synthelabo et Aventis), France Télécom et Carrefour.</TexteReponse>
+												<textelien>En savoir plus : </textelien>
+												<lien>http://www.lesechos.fr/monde/ameriques/</lien></item></liste></palier><palier num="3">
+												<intervalMin>2</intervalMin>
+												<intervalMax>3</intervalMax>
+										<textepalier>
+
+Vous avez 3 points : Véritable spécialiste de l'économie et de l'entreprise, vos connaissances sont solides et vous êtes pratiquement incollable sur l'actualité. Vous avez compris qu'il n'y avait pas de source plus complète que lesechos.fr.</textepalier>		
+										<chapeauresultat>Retrouvez ci-dessous les réponses détaillés du quiz.</chapeauresultat><liste><item><textequestion>Combien de sociétés ont quitté le CAC 40 en dix ans ?</textequestion>
+												<TexteReponse>Neuf sociétés présentes dans le CAC 40 en 2000 n'y sont plus aujourd'hui : TF1, Sodexho-Alliance (Sodexo), Thomson CSF (Thalès), Canal+, AGF, Casino Guichard, Equant, Valeo, Thomson Multimedia (Technicolor).</TexteReponse>
+												<textelien>En savoir plus : </textelien>
+												<lien>http://www.lesechos.fr/economie-france/social/</lien></item><item><textequestion>Seules deux des dix plus grosses capitalisations du CAC 40 en septembre 2000 ont aujourd'hui un poids plus important dans l'indice. De qui s'agit-il ?</textequestion>
+												<TexteReponse>Seuls Total et BNP Paribas ont aujourd'hui un poids plus important dans l'indice qu'en septembre 2000. Le poids de Total est passé de 11,65% à 12,27%, celui de BNP Paribas de 3,64% à 7,87%.</TexteReponse>
+												<textelien>En savoir plus : </textelien>
+												<lien>http://www.lesechos.fr/politique-societe/politique/</lien></item><item><textequestion>Combien de sociétés ont réussi à se maintenir parmi les dix premières capitalisations du CAC 40 entre 2000 et 2010 ?</textequestion>
+												<TexteReponse>Cinq sociétés ont réussi à se maintenir parmi les dix premières capitalisations du CAC 40 entre 2000 et 2010 : Total (anciennement TotalFina Elf), BNP Paribas, Sanofi-Aventis (issu de la fusion entre Sanofi-Synthelabo et Aventis), France Télécom et Carrefour.</TexteReponse>
+												<textelien>En savoir plus : </textelien>
+												<lien>http://www.lesechos.fr/monde/ameriques/</lien></item></liste></palier>
+				</paliers>
+			</quiz>
