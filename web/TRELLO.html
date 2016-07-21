@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>TRELLO API</title>
+<script src="https://api.trello.com/1/client.js?key=22398e2f567872866d57f452ff0dd330"></script>
+<script type="text/javascript">
+var success = function(successMsg) {
+  asyncOutput(successMsg);
+};
+
+var error = function(errorMsg) {
+  asyncOutput(errorMsg);
+};
+
+Trello.get('/member/me/boards', success, error);
+</script>
+</head>
+
+<body>
+</body>
+</html>
