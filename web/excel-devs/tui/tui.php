@@ -364,7 +364,108 @@ class Tui
 
 	 			break;
 	 		case 3:
-	 			# code...
+	 			$cleanString10 = $this->validateAndCleanHtml($rowData[9][2],$validations[8]);
+	 			$cleanString11 = $this->validateAndCleanHtml($rowData[10][2],$validations[9]);
+	 			$cleanString12 = $this->validateAndCleanHtml($rowData[11][2],$validations[10]);
+	 			$clearString13 = $this->validateAndCleanHtml($rowData[13][2],$validations[12]);
+	 			$clearString14 = $this->validateAndCleanHtml($rowData[14][2],$validations[13]);
+	 			$clearString15 = $this->validateAndCleanHtml($rowData[16][2],$validations[15]);
+	 			$clearString16 = $this->validateAndCleanHtml($rowData[17][2],$validations[16]);
+	 			$clearString17 = $this->validateAndCleanHtml($rowData[19][2],$validations[18]);
+	 			$clearString18 = $this->validateAndCleanHtml($rowData[20][2],$validations[19]);
+	 			$row_1 = array(
+	 				strip_tags($rowData[1][2]),
+	 				strip_tags($rowData[3][2]),
+	 				strip_tags($rowData[4][2]),
+	 				strip_tags($rowData[5][2]),
+	 				strip_tags($rowData[6][2]),
+	 				strip_tags($rowData[7][2]),
+	 				"CodeGroupe autour du monde"."(".$validations[8]."+".$validations[9]."+".$validations[10]."caractères )",
+	 				1,
+	 				2,
+	 				2,
+	 				1,
+	 				1,
+	 				strip_tags($rowData[8][2]),
+	 				strip_tags($rowData[9][2]),
+	 				strip_tags($cleanString10[2]),
+	 				strip_tags($rowData[10][2]),
+	 				$cleanString11[2],
+	 				strip_tags($rowData[11][2]),
+	 				$cleanString12[2],
+	 				"<h3>".strip_tags($rowData[9][2])."</h3><p>".strip_tags($rowData[10][2])."</p><p>".strip_tags($rowData[11][12])."</p>"
+				);
+
+				$row_2 = array(
+					strip_tags($rowData[1][2]),
+	 				strip_tags($rowData[3][2]),
+	 				strip_tags($rowData[4][2]),
+	 				strip_tags($rowData[5][2]),
+	 				strip_tags($rowData[6][2]),
+	 				strip_tags($rowData[7][2]),	
+	 				"CodeGroupe autour du monde"."(".$validations[12]."+".$validations[13]."caractères )",
+	 				1,
+	 				2,
+	 				2,
+	 				2,
+	 				2,
+	 				strip_tags($rowData[12][2]),
+	 				strip_tags($rowData[13][2]),
+	 				$clearString13[2],
+	 				" ",
+	 				" ",
+	 				strip_tags($rowData[14][2]),
+	 				$clearString14[2],
+	 				"<h3>".strip_tags($rowdata[13][2])."</h3><p>".strip_tags($rowData[14][2])."</p>"
+				);
+
+				$row_3 = array(
+					strip_tags($rowData[1][2]),
+	 				strip_tags($rowData[3][2]),
+	 				strip_tags($rowData[4][2]),
+	 				strip_tags($rowData[5][2]),
+	 				strip_tags($rowData[6][2]),
+	 				strip_tags($rowData[7][2]),	
+	 				"Nos destinations CodeGroupe"."(".$validations[15]."+".$validations[16]."caractères )",
+	 				2,
+	 				1,
+	 				1,
+	 				1,
+	 				1,
+	 				strip_tags($rowData[15][2]),
+	 				" ",
+	 				" ",
+	 				strip_tags($rowData[16][2]),
+	 				$clearString15[2],
+	 				strip_tags($rowData[17][2]),
+	 				$clearString16[2],
+	 				"<p>".strip_tags($rowData[16][2])."</p><p>".strip_tags($rowData[17][2])."</p>"
+				);
+
+				$row_4 = array(
+					strip_tags($rowData[1][2]),
+	 				strip_tags($rowData[3][2]),
+	 				strip_tags($rowData[4][2]),
+	 				strip_tags($rowData[5][2]),
+	 				strip_tags($rowData[6][2]),
+	 				strip_tags($rowData[7][2]),	
+	 				"Nos destinations CodeGroupe"."(".$validations[18]."+".$validations[19]."caractères )",
+	 				3,
+	 				1,
+	 				1,
+	 				1,
+	 				1,
+	 				strip_tags($rowData[18][2]),
+	 				" ",
+	 				" ",
+	 				strip_tags($rowData[19][2]),
+	 				$clearString17[2],
+	 				strip_tags($rowData[20][2]),
+	 				$clearString18[2],
+	 				"<p>".strip_tags($rowData[19][2])."</p><p>".strip_tags($rowData[20][2])."</p>"
+
+				);
+				$sheetRows=array($row_1,$row_2,$row_3,$row_4);	
 	 			break;
 	 		
 	 	}

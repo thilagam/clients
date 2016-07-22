@@ -99,9 +99,9 @@ if(isset($_POST['submit']))
 					$xlsxHeader=array('Article ID','Domain','Page','Chemin','Paramètres/Sujet','Destination','Bloc | Titre','Bloc | Position','Bloc | Nb de colonnes','Bloc | Nb de lignes','Sous-Bloc | index Colonne','Sous-bloc | Index Ligne','Sous-Bloc | Titre','Bloc SOUS-TITRE','NBCAR','Bloc MOBILE','NBCAR','Bloc SUITE','NBCAR','Sous-Bloc | Content in HTML Format');
 					break;
 				case 3:
-					$xlsxHeader=array('Article ID','Domain','Page','Chemin','Paramètres/Sujet','Destination','Bloc | Titre','Bloc | Position','Bloc | Nb de colonnes','Bloc | Nb de lignes','Sous-Bloc | index Colonne','Sous-bloc | Index Ligne','Sous-Bloc | Titre','Bloc MOBILE','NBCAR','Bloc SUITE','NBCAR','Sous-Bloc | Contenu, mis au format HTML');
+					$xlsxHeader=array('Article ID','Domain','Page','Chemin','Paramètres/Sujet','Destination','Bloc | Titre','Bloc | Position','Bloc | Nb de colonnes'.'Bloc | Nb de lignes','Sous-Bloc | index Colonne','Sous-bloc | Index Ligne','Sous-Bloc | Titre','Bloc SOUS-TITRE','NBCAR','Bloc MOBILE','NBCAR','Bloc SUITE','NBCAR','Sous-Bloc | Contenu, mis au format HTML');
 					break;
-			
+
 			}	
 		$final_array = array($xlsxHeader);
 		$index=1; // 1st 5 columns will be filled by the 1st DOCX file and remaning will other docx files 3rd & 4th Column
