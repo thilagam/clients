@@ -373,6 +373,7 @@ class Tui
 	 			$clearString16 = $this->validateAndCleanHtml($rowData[17][2],$validations[16]);
 	 			$clearString17 = $this->validateAndCleanHtml($rowData[19][2],$validations[18]);
 	 			$clearString18 = $this->validateAndCleanHtml($rowData[20][2],$validations[19]);
+	 			
 	 			$row_1 = array(
 	 				strip_tags($rowData[1][2]),
 	 				strip_tags($rowData[3][2]),
@@ -395,6 +396,7 @@ class Tui
 	 				$cleanString12[2],
 	 				"<h3>".strip_tags($rowData[9][2])."</h3><p>".strip_tags($rowData[10][2])."</p><p>".strip_tags($rowData[11][12])."</p>"
 				);
+
 
 				$row_2 = array(
 					strip_tags($rowData[1][2]),
