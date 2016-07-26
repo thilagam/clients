@@ -90,30 +90,41 @@ if(isset($_POST['submit']))
             
 			//echo "<pre>";print_r($docx_files); exit;
 			
-			$final_array = array(array("Article ID","Nom de l'attraction","ID attraction","Type","URL","Ville","Colonne1","Mot Cible 1","Mot cible 2","Mot cible 3","H1","H2 - 1","Paragraphe 1","H2 - 2","Paragraphe 2","H2 - 3","Paragraphe 3","Title","Meta Description"));
-			$j=1; // 1st 5 columns will be filled by the 1st DOCX file and remaning will other docx files 3rd & 4th Column
+			//$final_array = array(array("Article ID","Nom de l'attraction","ID attraction","Type","URL","Ville","Colonne1","Mot Cible 1","Mot cible 2","Mot cible 3","H1","H2 - 1","Paragraphe 1","H2 - 2","Paragraphe 2","H2 - 3","Paragraphe 3","Title","Meta Description"));
+			$final_array = array(array("ORIGINE","DESTINATION","PARENT","TITRE","INTRO","TITRE_EDITO","EDITO","CANONICAL","META_TITRE","META_DESC","META_INDEX","DATA_SUMO","CATEGORIE","LANGUE","PAYS","POIDS"));
+
+      $j=1; // 1st 5 columns will be filled by the 1st DOCX file and remaning will other docx files 3rd & 4th Column
 			$check_empty = "";
 						
 			
 			foreach($docx_files as $lkey=>$docx){
 				//echo "<pre>"; print_r (process_xmlData(readDocx($docx)));  exit;
 				$dummy_array = process_xmlData(readDocx($docx));
-       // echo "<pre>"; print_r($dummy_array);exit;
+        //echo "<pre>"; print_r($dummy_array);
 				$sheet_3_array = array();
         $other_data = array();
+        //echo "<pre>";print_r($dummy_array);
 				for($i=1;$i<=sizeof($dummy_array);$i++)
         {
+          //$sql = "Select * from cl_voyages_articles where voyages_article_id=".$dummy_array[$i][1];
+          //$result = $dbfunctions->mysql_qry($sql,1);  
+          //$other_data = mysql_fetch_row($result);
 					//$other_data = array();
 					if($i==1)
           {
-				      
-				      $sql = "Select bwa_other_data from cl_bestwestern_articles where bwa_article_id=".$dummy_array[$i][1];
+            $sql = "Select * from cl_voyages_articles where voyages_article_id=".$dummy_array[$i][1];
+            $result = $dbfunctions->mysql_qry($sql,1);  
+            $other_data = mysql_fetch_assoc($result);
+            //echo "<pre>";print_r($other_data);
+				     //$other_data = json_decode(utf8_encode($other_data[0]),true); 
+             $final_array[$j][$i] = $dummy_array[$i][1];
+				      /*$sql = "Select bwa_other_data from cl_bestwestern_articles where bwa_article_id=".$dummy_array[$i][1];
 				      $result = $dbfunctions->mysql_qry($sql,1);				      
 				      $other_data = mysql_fetch_row($result); 
               //echo "HIIIIIIIIIII<pre>"; print_r($other_data);
 				      $other_data = json_decode(utf8_encode($other_data[0]),true);
              // echo "<pre>"; print_r($other_data);exit;
-              $final_array[$j][$i] = $dummy_array[$i][1];            
+              $final_array[$j][$i] = $dummy_array[$i][1]; */           
           }
           else
           {
@@ -122,8 +133,9 @@ if(isset($_POST['submit']))
 					}
 				
 	      }
-        //echo "<pre>"; print_r($final_array[$j]);
-        $finalData=array();
+       //echo "<pre>";print_r($final_array);
+        //exit;
+        /*$finalData=array();
         $finalData[]=$final_array[$j][1]; //Article ID
         $finalData[]=$final_array[$j][3]; // nome de attractin
         $finalData[]=$final_array[$j][5]; //ID attraction    
@@ -144,9 +156,30 @@ if(isset($_POST['submit']))
         $finalData[]=(!empty($other_data))? windowsFix($other_data[4]):'';  //H1
         $finalData[]=(!empty($other_data))? windowsFix($other_data[3]):'';  //H1  
         $final_array[$j]=$finalData;
-				$j++;
+				$j++;*/
+          $finalData = array();
+          $finalData[] = (!empty($other_data))?$other_data['voyages_origin']:$final_array[$j][4];
+          $finalData[] = (!empty($other_data))?$other_data['voyages_destination']:$final_array[$j][5];
+          $finalData[] = (!empty($other_data))?$other_data['voyages_parent']:" ";
+          $finalData[] = (!empty($other_data))?$other_data['voyages_title']:" ";
+          $finalData[] = $final_array[$j][6];
+          $finalData[] = (!empty($other_data))?$other_data['voyages_title_edito']:" ";
+          $finalData[] = "<h2>".$final_array[$j][7]."</h2><p>".$final_array[$j][8]."</p><h2>".$final_array[$j][9]."</h2><p>".$final_array[$j][10]."</p><h2>".$final_array[$j][11]."</h2><p>".$final_array[$j][12]."</p>";
+          $finalData[] = (!empty($other_data))?$other_data['voyages_canonical']:" ";
+          $finalData[] = (!empty($other_data))?$other_data['voyages_meta_title']:" ";
+          $finalData[] = (!empty($other_data))?$other_data['voyages_meta_desc']:" ";
+          $finalData[] = (!empty($other_data))?$other_data['voyages_meta_index']:" ";
+          $finalData[] = (!empty($other_data))?$other_data['voyages_data_sumo']:" ";
+          $finalData[] = (!empty($other_data))?$other_data['voyages_categorie']:$final_array[$j][3];
+          $finalData[] = "fr";
+          $finalData[] = (!empty($other_data))?$other_data['voyages_pays']:" ";
+          $finalData[] = (!empty($other_data))?$other_data['voyages_poids']:" ";
+          $final_array[$j]=$finalData;
+          $j++;
+
+        
 			}
-			//exit;
+			
 			
 			//echo "<pre>";print_r($final_array); exit;
 

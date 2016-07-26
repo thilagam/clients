@@ -345,6 +345,7 @@ function readDocx($filePath) {
             $language ='fr_FR'; //exit;
             //echo "<br />";
             $col_k_value = ""; echo $k;
+            $style_no = array('fill'=>array('type'=>PHPExcel_Style_Fill::FILL_SOLID ,'color'=>array('rgb'=>'FF0000')));
             foreach ($row as $key => $value)
             {	
 				if(preg_match("/^(ERR-)/", $value)){
@@ -358,7 +359,6 @@ function readDocx($filePath) {
 				}
 					
 				$value = write_docx_special_character_function($value,trim($language));
-				
                 $objPHPExcel->getActiveSheet()->setCellValue($col.($rowCount+1), $value);
                 
                 $col++;

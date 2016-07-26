@@ -388,13 +388,13 @@ class Tui
 	 				1,
 	 				1,
 	 				strip_tags($rowData[8][2]),
-	 				strip_tags($rowData[9][2]),
-	 				strip_tags($cleanString10[2]),
-	 				strip_tags($rowData[10][2]),
+	 				$cleanString10[0],
+	 				$cleanString10[2],
+	 				$cleanString11[0],
 	 				$cleanString11[2],
-	 				strip_tags($rowData[11][2]),
+	 				$cleanString12[0],
 	 				$cleanString12[2],
-	 				"<h3>".strip_tags($rowData[9][2])."</h3><p>".strip_tags($rowData[10][2])."</p><p>".strip_tags($rowData[11][12])."</p>"
+	 				"<h3>".strip_tags($rowData[9][2])."</h3><p>".strip_tags($rowData[10][2])."</p><p>".strip_tags($rowData[11][2])."</p>"
 				);
 
 
@@ -412,13 +412,13 @@ class Tui
 	 				2,
 	 				2,
 	 				strip_tags($rowData[12][2]),
-	 				strip_tags($rowData[13][2]),
+	 				$clearString13[0],
 	 				$clearString13[2],
 	 				" ",
 	 				" ",
-	 				strip_tags($rowData[14][2]),
+	 				$clearString14[0],
 	 				$clearString14[2],
-	 				"<h3>".strip_tags($rowdata[13][2])."</h3><p>".strip_tags($rowData[14][2])."</p>"
+	 				"<h3>".strip_tags($rowData[13][2])."</h3><p>".strip_tags($rowData[14][2])."</p>"
 				);
 
 				$row_3 = array(
@@ -437,9 +437,9 @@ class Tui
 	 				strip_tags($rowData[15][2]),
 	 				" ",
 	 				" ",
-	 				strip_tags($rowData[16][2]),
+	 				$clearString15[0],
 	 				$clearString15[2],
-	 				strip_tags($rowData[17][2]),
+	 				$clearString16[0],
 	 				$clearString16[2],
 	 				"<p>".strip_tags($rowData[16][2])."</p><p>".strip_tags($rowData[17][2])."</p>"
 				);
@@ -460,9 +460,9 @@ class Tui
 	 				strip_tags($rowData[18][2]),
 	 				" ",
 	 				" ",
-	 				strip_tags($rowData[19][2]),
+	 				$clearString17[0],
 	 				$clearString17[2],
-	 				strip_tags($rowData[20][2]),
+	 				$clearString18[0],
 	 				$clearString18[2],
 	 				"<p>".strip_tags($rowData[19][2])."</p><p>".strip_tags($rowData[20][2])."</p>"
 
