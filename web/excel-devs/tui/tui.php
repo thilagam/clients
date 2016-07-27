@@ -1,5 +1,6 @@
 <?php
 include_once(LAHALLE2_PATH."/dbfunctions.php");
+include_once(INCLUDE_PATH."/basiclib.php");
 /**
  * Lahalle Lib is a PHP-functions library used in tui Devs. It is collection of commonly used functions for Tui devs
  *
@@ -97,7 +98,8 @@ class Tui
 			$newValue='';
 			foreach ($stars as $skey => $svalue) {
 				if($sind%2==0 && $sind!=1){
-					$svalue="<b>".$svalue."</b>";
+					//$svalue="<b>".$svalue."</b>";
+					$svalue="<strong>".$svalue."</strong>";
 				}	
 				$newValue.=$svalue;
 				$sind++;
@@ -165,16 +167,18 @@ class Tui
 	 		return false;
 	 	}	
 	 	$sheetRows=array();
+	 	$basiclib = new Basiclib();
 	 	switch ($type) {
 	 		case 1:
 	 			//echo "<pre>"; print_r($rowData );exit;
 			 	$common=array(
 			 				strip_tags($rowData[1][2]),
 			 				//strip_tags($rowData[2][2]),
-			 				strip_tags($rowData[3][2]),
+			 				//strip_tags($rowData[3][2]),
+			 				"TUI",
 			 				strip_tags($rowData[4][2]),
 			 				strip_tags($rowData[5][2]),
-			 				strip_tags($rowData[6][2]),
+			 				$basiclib->normaliseUrlString(strip_tags(strtolower($rowData[6][2]))),
 			 				strip_tags($rowData[7][2])
 			 			);
 			 	$semiComArray=array(
@@ -226,6 +230,7 @@ class Tui
 			 			$index++;
 			 		}
 			 	}
+			 	//echo "<pre>";print_r($sheetRows);exit;
 	 			break;
 	 		
 	 		case 2:
@@ -236,10 +241,11 @@ class Tui
 	 			$cleanString2=$this->validateAndCleanHtml($rowData[10][2],$validations[9]);
 			 	$row_1=array(
 			 				strip_tags($rowData[1][2]),
-			 				strip_tags($rowData[3][2]),
+			 				//strip_tags($rowData[3][2]),
+			 				"TUI",
 			 				strip_tags($rowData[4][2]),
 			 				strip_tags($rowData[5][2]),
-			 				strip_tags($rowData[6][2]),
+			 				$basiclib->normaliseUrlString(strip_tags(strtolower($rowData[6][2]))),
 			 				strip_tags($rowData[7][2]),
 			 				strip_tags($rowData[8][2])." ( ".$validations[8]." + ".$validations[9]." ) ",
 			 				1,
@@ -263,10 +269,11 @@ class Tui
 	 			//echo "<pre>"; print_r($cleansous);exit;
 			 	$row_2=array(
 			 				strip_tags($rowData[1][2]),
-			 				strip_tags($rowData[3][2]),
+			 				//strip_tags($rowData[3][2]),
+			 				"TUI",
 			 				strip_tags($rowData[4][2]),
 			 				strip_tags($rowData[5][2]),
-			 				strip_tags($rowData[6][2]),
+			 				$basiclib->normaliseUrlString(strip_tags(strtolower($rowData[6][2]))),
 			 				strip_tags($rowData[7][2]),
 			 				strip_tags($rowData[11][2])." ( ".$validations[11]." + ".$validations[12]." + ".$validations[13]." ) ",
 			 				2,
@@ -289,10 +296,11 @@ class Tui
 			 	
 	 			$row_3=array(
 			 				strip_tags($rowData[1][2]),
-			 				strip_tags($rowData[3][2]),
+			 				//strip_tags($rowData[3][2]),
+			 				"TUI",
 			 				strip_tags($rowData[4][2]),
 			 				strip_tags($rowData[5][2]),
-			 				strip_tags($rowData[6][2]),
+			 				$basiclib->normaliseUrlString(strip_tags(strtolower($rowData[6][2]))),
 			 				strip_tags($rowData[7][2]),
 			 				strip_tags($rowData[15][2])." ( ".$validations[15]." + ".$validations[16]." ) ",
 			 				2,
@@ -315,10 +323,11 @@ class Tui
 			 	
 	 			$row_4=array(
 			 				strip_tags($rowData[1][2]),
-			 				strip_tags($rowData[3][2]),
+			 				//strip_tags($rowData[3][2]),
+			 				"TUI",
 			 				strip_tags($rowData[4][2]),
 			 				strip_tags($rowData[5][2]),
-			 				strip_tags($rowData[6][2]),
+			 				$basiclib->normaliseUrlString(strip_tags(strtolower($rowData[6][2]))),
 			 				strip_tags($rowData[7][2]),
 			 				strip_tags($rowData[18][2])." ( ".$validations[18]." + ".$validations[19]." ) ",
 			 				2,
@@ -340,10 +349,11 @@ class Tui
 	 			$cleanString8=$this->validateAndCleanHtml($rowData[23][2],$validations[22]);
 			 	$row_5=array(
 			 				strip_tags($rowData[1][2]),
-			 				strip_tags($rowData[3][2]),
+			 				//strip_tags($rowData[3][2]),
+			 				"TUI",
 			 				strip_tags($rowData[4][2]),
 			 				strip_tags($rowData[5][2]),
-			 				strip_tags($rowData[6][2]),
+			 				$basiclib->normaliseUrlString(strip_tags(strtolower($rowData[6][2]))),
 			 				strip_tags($rowData[7][2]),
 			 				strip_tags($rowData[21][2])." ( ".$validations[21]." + ".$validations[22]." ) ",
 			 				3,

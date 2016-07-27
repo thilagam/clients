@@ -194,8 +194,8 @@ if(isset($_POST['submit']))
 			
 			//echo "<pre>";print_r($final_array); exit;
 
-            $rand="VoyagesSNCF-delivery-".uniqid()."-".date('d-m-y-h-m');
-    	    $srcPath=VOYAGES_WRITER_FILE_PATH."/dev2/".$rand."/";
+      $rand="VoyagesSNCF-delivery-".uniqid()."-".date('d-m-y-h-m');
+    	$srcPath=VOYAGES_WRITER_FILE_PATH."/dev2/".$rand."/";
 			$srcFile=VOYAGES_WRITER_FILE_PATH."/dev2/".$rand.".xlsx";
 			
 			//exit;
@@ -227,7 +227,8 @@ else
   */
     function toLink($val)
     {
-      //preg_replace('/(\*\*)(.+)(\*\*)/', "<li>$2</li>", $value);
+      $val=preg_replace('/(\*\*)(.+)(\*\*)/', "<b>$2</b>", $val);
+      $val=preg_replace('/(\*)(.+)(\*)/', "<i>$2</i>", $val);
       return preg_replace("/(\[(.+),(.+)\])/", "<a href='$3'>$2 </a>" , $val);
     }
 
