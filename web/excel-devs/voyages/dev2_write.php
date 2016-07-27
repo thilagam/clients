@@ -118,6 +118,7 @@ if(isset($_POST['submit']))
             //echo "<pre>";print_r($other_data);
 				     //$other_data = json_decode(utf8_encode($other_data[0]),true); 
              $final_array[$j][$i] = $dummy_array[$i][1];
+
 				      /*$sql = "Select bwa_other_data from cl_bestwestern_articles where bwa_article_id=".$dummy_array[$i][1];
 				      $result = $dbfunctions->mysql_qry($sql,1);				      
 				      $other_data = mysql_fetch_row($result); 
@@ -132,7 +133,11 @@ if(isset($_POST['submit']))
 					   $final_array[$j][$i] = ($i >= 8 || $i <= 16) ? modify_content($dummy_array[$i][1],$i) : $dummy_array[$i][1];  					
 					}
 				
-	      }
+	      
+        
+     }
+     
+        //$dbfunctions->mysql_qry($sql1,1); 
        //echo "<pre>";print_r($final_array);
         //exit;
         /*$finalData=array();
@@ -157,6 +162,11 @@ if(isset($_POST['submit']))
         $finalData[]=(!empty($other_data))? windowsFix($other_data[3]):'';  //H1  
         $final_array[$j]=$finalData;
 				$j++;*/
+        //echo preg_replace("/(\[(.+),(.+)\])/", "<a href='$3'>$2 </a>" , $final_array[$j][9]);
+        //echo toLink($final_array[$j][9]);exit;
+        $edito = "<h2>".str_replace("'","''",toLink($final_array[$j][7]))."</h2><p>".str_replace("'","''",toLink($final_array[$j][8]))."</p><h2>".str_replace("'","''",toLink($final_array[$j][9]))."</h2><p>".str_replace("'","''",toLink($final_array[$j][10]))."</p><h2>".str_replace("'","''",toLink($final_array[$j][11]))."</h2><p>".str_replace("'","''",toLink($final_array[$j][12]))."</p>";
+        $sql1 = "update cl_voyages_articles set voyages_edito = '".$edito."', voyages_intro = '".str_replace("'","''",$final_array[$j][6])."'  where voyages_article_id=".$final_array[$j][1];
+        $dbfunctions->mysql_qry($sql1,1); 
           $finalData = array();
           $finalData[] = (!empty($other_data))?$other_data['voyages_origin']:$final_array[$j][4];
           $finalData[] = (!empty($other_data))?$other_data['voyages_destination']:$final_array[$j][5];
@@ -164,7 +174,8 @@ if(isset($_POST['submit']))
           $finalData[] = (!empty($other_data))?$other_data['voyages_title']:" ";
           $finalData[] = $final_array[$j][6];
           $finalData[] = (!empty($other_data))?$other_data['voyages_title_edito']:" ";
-          $finalData[] = "<h2>".$final_array[$j][7]."</h2><p>".$final_array[$j][8]."</p><h2>".$final_array[$j][9]."</h2><p>".$final_array[$j][10]."</p><h2>".$final_array[$j][11]."</h2><p>".$final_array[$j][12]."</p>";
+          $finalData[] = "<h2>".toLink($final_array[$j][7])."</h2><p>".toLink($final_array[$j][8])."</p><h2>".toLink($final_array[$j][9])."</h2><p>".toLink($final_array[$j][10])."</p><h2>".toLink($final_array[$j][11])."</h2><p>".toLink($final_array[$j][12])."</p>";
+          //$finalData[] = $edito;
           $finalData[] = (!empty($other_data))?$other_data['voyages_canonical']:" ";
           $finalData[] = (!empty($other_data))?$other_data['voyages_meta_title']:" ";
           $finalData[] = (!empty($other_data))?$other_data['voyages_meta_desc']:" ";
@@ -209,6 +220,16 @@ if(isset($_POST['submit']))
 }
 else
     header("Location:dev2.php");
+
+  /*
+    To convert [click here,link] to Actual link
+
+  */
+    function toLink($val)
+    {
+      //preg_replace('/(\*\*)(.+)(\*\*)/', "<li>$2</li>", $value);
+      return preg_replace("/(\[(.+),(.+)\])/", "<a href='$3'>$2 </a>" , $val);
+    }
 
    /* modify_content function
    * 
@@ -260,8 +281,8 @@ function all_docx_files($path){
 function process_xmlData($text){
 	/*things need to change end*/
 //$text=preg_replace("/<([a-z][a-z0-9]*)[^>]*?(\/?)>/i",'<$1$2>',$text);
-$text = str_replace("[","####",$text);
-$text = str_replace("]","#####",$text);
+$text = str_replace("[","||||",$text);
+$text = str_replace("]","|||||",$text);
 
 $text = str_replace("</w:tr>","]",$text);
 $text = str_replace("<w:tr>","[",$text);
@@ -295,8 +316,9 @@ foreach($matches as $key => $value){
 		//$htmldata.="<td >".trim(strip_tags($v))."</td>";
 		
 	}
-	$arrData = str_replace("####","[",$arrData);
-	$arrData = str_replace("#####","]",$arrData);
+  $arrData = str_replace("|||||","]",$arrData);
+	$arrData = str_replace("||||","[",$arrData);
+	
 	$newArr[$ind]=$arrData;
 	//$htmldata.="</tr>";
 //	echo "<pre>";print_r($matches2[0]);
