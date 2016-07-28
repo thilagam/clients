@@ -100,7 +100,7 @@ if(isset($_POST['submit']))
 			foreach($docx_files as $lkey=>$docx){
 				//echo "<pre>"; print_r (process_xmlData(readDocx($docx)));  exit;
 				$dummy_array = process_xmlData(readDocx($docx));
-        //echo "<pre>"; print_r($dummy_array);
+        //echo "<pre>"; print_r($dummy_array);exit;
 				$sheet_3_array = array();
         $other_data = array();
         //echo "<pre>";print_r($dummy_array);
@@ -164,7 +164,7 @@ if(isset($_POST['submit']))
 				$j++;*/
         //echo preg_replace("/(\[(.+),(.+)\])/", "<a href='$3'>$2 </a>" , $final_array[$j][9]);
         //echo toLink($final_array[$j][9]);exit;
-        $edito = "<h2>".str_replace("'","''",toLink($final_array[$j][7]))."</h2><p>".str_replace("'","''",toLink($final_array[$j][8]))."</p><h2>".str_replace("'","''",toLink($final_array[$j][9]))."</h2><p>".str_replace("'","''",toLink($final_array[$j][10]))."</p><h2>".str_replace("'","''",toLink($final_array[$j][11]))."</h2><p>".str_replace("'","''",toLink($final_array[$j][12]))."</p>";
+        $edito = "<h2>".paragraph(str_replace("'","''",toLink($final_array[$j][7])))."</h2><p>".paragraph(str_replace("'","''",toLink($final_array[$j][8])))."</p><h2>".paragraph(str_replace("'","''",toLink($final_array[$j][9])))."</h2><p>".paragraph(str_replace("'","''",toLink($final_array[$j][10])))."</p><h2>".paragraph(str_replace("'","''",toLink($final_array[$j][11])))."</h2><p>".paragraph(str_replace("'","''",toLink($final_array[$j][12])))."</p>";
         $sql1 = "update cl_voyages_articles set voyages_edito = '".$edito."', voyages_intro = '".str_replace("'","''",$final_array[$j][6])."'  where voyages_article_id=".$final_array[$j][1];
         $dbfunctions->mysql_qry($sql1,1); 
           $finalData = array();
@@ -172,9 +172,9 @@ if(isset($_POST['submit']))
           $finalData[] = (!empty($other_data))?$other_data['voyages_destination']:$final_array[$j][5];
           $finalData[] = (!empty($other_data))?$other_data['voyages_parent']:" ";
           $finalData[] = (!empty($other_data))?$other_data['voyages_title']:" ";
-          $finalData[] = $final_array[$j][6];
+          $finalData[] = toLink($final_array[$j][7]);
           $finalData[] = (!empty($other_data))?$other_data['voyages_title_edito']:" ";
-          $finalData[] = "<h2>".toLink($final_array[$j][7])."</h2><p>".toLink($final_array[$j][8])."</p><h2>".toLink($final_array[$j][9])."</h2><p>".toLink($final_array[$j][10])."</p><h2>".toLink($final_array[$j][11])."</h2><p>".toLink($final_array[$j][12])."</p>";
+          $finalData[] = "<h2>".paragraph(toLink($final_array[$j][7]))."</h2><p>".paragraph(toLink($final_array[$j][8]))."</p><h2>".paragraph(toLink($final_array[$j][9]))."</h2><p>".paragraph(toLink($final_array[$j][10]))."</p><h2>".paragraph(toLink($final_array[$j][11]))."</h2><p>".paragraph(toLink($final_array[$j][12]))."</p>";
           //$finalData[] = $edito;
           $finalData[] = (!empty($other_data))?$other_data['voyages_canonical']:" ";
           $finalData[] = (!empty($other_data))?$other_data['voyages_meta_title']:" ";
@@ -227,9 +227,9 @@ else
   */
     function toLink($val)
     {
-      $val=preg_replace('/(\*\*)(.+)(\*\*)/', "<b>$2</b>", $val);
-      $val=preg_replace('/(\*)(.+)(\*)/', "<i>$2</i>", $val);
-      return preg_replace("/(\[(.+),(.+)\])/", "<a href='$3'>$2 </a>" , $val);
+      $val1=preg_replace('/(\*\*)(.[^*]+)(\*\*)/', "<b>$2</b>", $val);
+      $val2=preg_replace('/(\*)(.[^*]+)(\*)/', "<i>$2</i>", $val1);
+      return preg_replace("/(\[(.+),(.+)\])/", "<a href='$3'>$2 </a>" , $val2);
     }
 
    /* modify_content function
@@ -287,6 +287,7 @@ $text = str_replace("]","|||||",$text);
 
 $text = str_replace("</w:tr>","]",$text);
 $text = str_replace("<w:tr>","[",$text);
+
 //echo $text;exit;
 $matches = array();
 
@@ -314,7 +315,8 @@ foreach($matches as $key => $value){
 		
 		if($k > 0)
 		$arrData[]=read_docx_special_character_function(trim(strip_tags($v)));
-		//$htmldata.="<td >".trim(strip_tags($v))."</td>";
+      //$arrData[]=read_docx_special_character_function(trim(paragraph($v)));
+    //$htmldata.="<td >".trim(strip_tags($v))."</td>";
 		
 	}
   $arrData = str_replace("|||||","]",$arrData);
@@ -333,6 +335,30 @@ foreach($matches as $key => $value){
 //$htmldata = str_replace("#####","]",$htmldata);
 
 return $newArr;
+}
+
+function paragraph($text)
+{
+    
+    $text = str_replace("[","||||",$text);
+    $text = str_replace("]","|||||",$text);
+    $text = str_replace("</w:p>","]",$text);
+   // $text = str_replace("<w:p>","[",$text);
+    $arr=explode(']', $text);
+    $val = "";
+    //$text1=preg_replace("/(\[(.+)\])/", "<p>$2</p>" , $text);
+    foreach ($arr as $key => $value) {
+      $val .= "<p>".strip_tags($value)."</p>";
+    }
+
+    $text1 = str_replace("]","|||||",$val);
+    $text1 = str_replace("[","||||",$val);
+
+    //return strip_tags($val);
+    return $val;
+    //return strip_tags($text);
+
+
 }
 
    /* readDocx function 
