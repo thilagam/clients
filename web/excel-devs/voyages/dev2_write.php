@@ -138,8 +138,8 @@ if(isset($_POST['submit']))
      }
      
         //$dbfunctions->mysql_qry($sql1,1); 
-       //echo "<pre>";print_r($final_array);
-        //exit;
+		echo "<pre>";print_r($final_array);
+        exit;
         /*$finalData=array();
         $finalData[]=$final_array[$j][1]; //Article ID
         $finalData[]=$final_array[$j][3]; // nome de attractin
@@ -164,8 +164,9 @@ if(isset($_POST['submit']))
 				$j++;*/
         //echo preg_replace("/(\[(.+),(.+)\])/", "<a href='$3'>$2 </a>" , $final_array[$j][9]);
         //echo toLink($final_array[$j][9]);exit;
-        $edito = "<h2>".paragraph(str_replace("'","''",toLink($final_array[$j][7])))."</h2><p>".paragraph(str_replace("'","''",toLink($final_array[$j][8])))."</p><h2>".paragraph(str_replace("'","''",toLink($final_array[$j][9])))."</h2><p>".paragraph(str_replace("'","''",toLink($final_array[$j][10])))."</p><h2>".paragraph(str_replace("'","''",toLink($final_array[$j][11])))."</h2><p>".paragraph(str_replace("'","''",toLink($final_array[$j][12])))."</p>";
-        $sql1 = "update cl_voyages_articles set voyages_edito = '".$edito."', voyages_intro = '".str_replace("'","''",$final_array[$j][6])."'  where voyages_article_id=".$final_array[$j][1];
+        $edito = "<h2>".strip_tags(str_replace("'","''",toLink($final_array[$j][8])))."</h2><p>".paragraph(str_replace("'","''",toLink($final_array[$j][9])))."</p><h2>".strip_tags(str_replace("'","''",toLink($final_array[$j][10])))."</h2><p>".paragraph(str_replace("'","''",toLink($final_array[$j][11])))."</p><h2>".strip_tags(str_replace("'","''",toLink($final_array[$j][12])))."</h2><p>".paragraph(str_replace("'","''",toLink($final_array[$j][13])))."</p>";
+        echo $edit0;
+        $sql1 = "update cl_voyages_articles set voyages_edito = '".$edito."', voyages_intro = '".str_replace("'","''",$final_array[$j][7])."'  where voyages_article_id=".$final_array[$j][1];
         $dbfunctions->mysql_qry($sql1,1); 
           $finalData = array();
           $finalData[] = (!empty($other_data))?$other_data['voyages_origin']:$final_array[$j][4];
@@ -174,7 +175,7 @@ if(isset($_POST['submit']))
           $finalData[] = (!empty($other_data))?$other_data['voyages_title']:" ";
           $finalData[] = toLink($final_array[$j][7]);
           $finalData[] = (!empty($other_data))?$other_data['voyages_title_edito']:" ";
-          $finalData[] = "<h2>".paragraph(toLink($final_array[$j][7]))."</h2><p>".paragraph(toLink($final_array[$j][8]))."</p><h2>".paragraph(toLink($final_array[$j][9]))."</h2><p>".paragraph(toLink($final_array[$j][10]))."</p><h2>".paragraph(toLink($final_array[$j][11]))."</h2><p>".paragraph(toLink($final_array[$j][12]))."</p>";
+          $finalData[] = "<h2>".strip_tags(toLink($final_array[$j][8]))."</h2><p>".paragraph(toLink($final_array[$j][9]))."</p><h2>".strip_tags(toLink($final_array[$j][10]))."</h2><p>".paragraph(toLink($final_array[$j][11]))."</p><h2>".strip_tags(toLink($final_array[$j][12]))."</h2><p>".paragraph(toLink($final_array[$j][13]))."</p>";
           //$finalData[] = $edito;
           $finalData[] = (!empty($other_data))?$other_data['voyages_canonical']:" ";
           $finalData[] = (!empty($other_data))?$other_data['voyages_meta_title']:" ";
@@ -192,7 +193,7 @@ if(isset($_POST['submit']))
 			}
 			
 			
-			//echo "<pre>";print_r($final_array); exit;
+			echo "<pre>";print_r($final_array); exit;
 
       $rand="VoyagesSNCF-delivery-".uniqid()."-".date('d-m-y-h-m');
     	$srcPath=VOYAGES_WRITER_FILE_PATH."/dev2/".$rand."/";
@@ -347,12 +348,14 @@ function paragraph($text)
     $arr=explode(']', $text);
     $val = "";
     //$text1=preg_replace("/(\[(.+)\])/", "<p>$2</p>" , $text);
-    foreach ($arr as $key => $value) {
-      $val .= "<p>".strip_tags($value)."</p>";
-    }
+    if(count($arr)>1){
+		foreach ($arr as $key => $value) {
+		  $val .= "<p>".strip_tags($value)."</p>";
+		}
+	}
 
-    $text1 = str_replace("]","|||||",$val);
-    $text1 = str_replace("[","||||",$val);
+    $val = str_replace("]","|||||",$val);
+    $val = str_replace("[","||||",$val);
 
     //return strip_tags($val);
     return $val;

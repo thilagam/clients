@@ -93,7 +93,7 @@ if(isset($_POST['submit']))
 		$xlsxHeader=array();
 		switch ($type) {
 				case 1:
-					$xlsxHeader=array('Article ID','Domain','Page','Chemin','Paramètres/Sujet','Bloc | Titre','Bloc | Position','Bloc | Nb de colonnes','Bloc | Nb de lignes','Sous-Bloc | index Colonne','Sous-bloc | Index Ligne','Sous-Bloc | Titre','Bloc MOBILE','NBCAR','Bloc SUITE','NBCAR','Sous-Bloc | Contenu, mis au format HTML','New Column');
+					$xlsxHeader=array('Article ID','Domain','Page','Chemin','Paramètres/Sujet','Bloc | Titre','Bloc | Position','Bloc | Nb de colonnes','Bloc | Nb de lignes','Sous-Bloc | index Colonne','Sous-bloc | Index Ligne','Sous-Bloc | Titre','Bloc MOBILE','NBCAR','Bloc SUITE','NBCAR','Sous-Bloc | Contenu, mis au format HTML','Type sous-bloc');
 					break;
 				case 2:
 					$xlsxHeader=array('Article ID','Domain','Page','Chemin','Paramètres/Sujet','Bloc | Titre','Bloc | Position','Bloc | Nb de colonnes','Bloc | Nb de lignes','Sous-Bloc | index Colonne','Sous-bloc | Index Ligne','Sous-Bloc | Titre','Bloc SOUS-TITRE','NBCAR','Bloc MOBILE','NBCAR','Bloc SUITE','NBCAR','Sous-Bloc | Content in HTML Format','Type sous-bloc');
