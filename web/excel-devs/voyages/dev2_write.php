@@ -86,100 +86,57 @@ if(isset($_POST['submit']))
 				chmod($srcFile, 0777);
 				$unzip_dir = unzipfolder($srcFile);
 			}
-            $docx_files = all_docx_files($unzip_dir);
-            
-			//echo "<pre>";print_r($docx_files); exit;
-			
-			//$final_array = array(array("Article ID","Nom de l'attraction","ID attraction","Type","URL","Ville","Colonne1","Mot Cible 1","Mot cible 2","Mot cible 3","H1","H2 - 1","Paragraphe 1","H2 - 2","Paragraphe 2","H2 - 3","Paragraphe 3","Title","Meta Description"));
+      $docx_files = all_docx_files($unzip_dir);
+      
 			$final_array = array(array("ORIGINE","DESTINATION","PARENT","TITRE","INTRO","TITRE_EDITO","EDITO","CANONICAL","META_TITRE","META_DESC","META_INDEX","DATA_SUMO","CATEGORIE","LANGUE","PAYS","POIDS"));
 
-      $j=1; // 1st 5 columns will be filled by the 1st DOCX file and remaning will other docx files 3rd & 4th Column
+      $j=1; 
 			$check_empty = "";
 						
-			
-			foreach($docx_files as $lkey=>$docx){
-				//echo "<pre>"; print_r (process_xmlData(readDocx($docx)));  exit;
+			$newFinalArray=array(array("ORIGINE","DESTINATION","PARENT","TITRE","INTRO","TITRE_EDITO","EDITO","CANONICAL","META_TITRE","META_DESC","META_INDEX","DATA_SUMO","CATEGORIE","LANGUE","PAYS","POIDS"));
+			foreach($docx_files as $lkey=>$docx)
+      {
+				
 				$dummy_array = process_xmlData(readDocx($docx));
-        //echo "<pre>"; print_r($dummy_array);exit;
-				$sheet_3_array = array();
+        $sheet_3_array = array();
         $other_data = array();
-        //echo "<pre>";print_r($dummy_array);
+       // echo "<pre>"; print_r($dummy_array);
 				for($i=1;$i<=sizeof($dummy_array);$i++)
         {
-          //$sql = "Select * from cl_voyages_articles where voyages_article_id=".$dummy_array[$i][1];
-          //$result = $dbfunctions->mysql_qry($sql,1);  
-          //$other_data = mysql_fetch_row($result);
-					//$other_data = array();
-					if($i==1)
+        	if($i==1)
           {
-            $sql = "Select * from cl_voyages_articles where voyages_article_id=".$dummy_array[$i][1];
+            $sql = "Select * from cl_voyages_articles where voyages_article_id=".strip_tags($dummy_array[$i][2]);
+            //echo $sql;exit;
             $result = $dbfunctions->mysql_qry($sql,1);  
             $other_data = mysql_fetch_assoc($result);
-            //echo "<pre>";print_r($other_data);
-				     //$other_data = json_decode(utf8_encode($other_data[0]),true); 
-             $final_array[$j][$i] = $dummy_array[$i][1];
-
-				      /*$sql = "Select bwa_other_data from cl_bestwestern_articles where bwa_article_id=".$dummy_array[$i][1];
-				      $result = $dbfunctions->mysql_qry($sql,1);				      
-				      $other_data = mysql_fetch_row($result); 
-              //echo "HIIIIIIIIIII<pre>"; print_r($other_data);
-				      $other_data = json_decode(utf8_encode($other_data[0]),true);
-             // echo "<pre>"; print_r($other_data);exit;
-              $final_array[$j][$i] = $dummy_array[$i][1]; */           
+            $final_array[$j][$i] = $dummy_array[$i][2];
+          }else{
+            $final_array[$j][$i] = $dummy_array[$i][2];
           }
-          else
-          {
-					  
-					   $final_array[$j][$i] = ($i >= 8 || $i <= 16) ? modify_content($dummy_array[$i][1],$i) : $dummy_array[$i][1];  					
-					}
-				
-	      
+        }
         
-     }
-     
-        //$dbfunctions->mysql_qry($sql1,1); 
-		//echo "<pre>";print_r($final_array);
-        
-        /*$finalData=array();
-        $finalData[]=$final_array[$j][1]; //Article ID
-        $finalData[]=$final_array[$j][3]; // nome de attractin
-        $finalData[]=$final_array[$j][5]; //ID attraction    
-        $finalData[]=$final_array[$j][2]; //type
-        $finalData[]=(!empty($other_data))? windowsFix($other_data[0]):'';   //URL
-        $finalData[]=$final_array[$j][4]; //ville 
-        $finalData[]=(!empty($other_data))? windowsFix($other_data[1]):''; ;   //Colonne1
-        $finalData[]=$final_array[$j][6];  // Mot Cible 1
-        $finalData[]=$final_array[$j][7];  // Mot Cible 2
-        $finalData[]=$final_array[$j][8];  // Mot Cible 3
-        $finalData[]="<h1>".$final_array[$j][9]."</h1>";//(!empty($other_data))? windowsFix("<h1>".$other_data[2]."</h1>"):'';  //H1
-        $finalData[]="<h2>".$final_array[$j][10]."</h2>"; //h2-1
-        $finalData[]="<p>".$final_array[$j][11]."</p>"; //p1
-        $finalData[]="<h2>".$final_array[$j][12]."</h2>";//h2-2
-        $finalData[]="<p>".$final_array[$j][13]."</p>"; //p2
-        $finalData[]="<h2>".$final_array[$j][14]."</h2>";//h2-3
-        $finalData[]="<p>".$final_array[$j][15]."</p>"; //p3
-        $finalData[]=(!empty($other_data))? windowsFix($other_data[4]):'';  //H1
-        $finalData[]=(!empty($other_data))? windowsFix($other_data[3]):'';  //H1  
-        $final_array[$j]=$finalData;
-				$j++;*/
-        //echo preg_replace("/(\[(.+),(.+)\])/", "<a href='$3'>$2 </a>" , $final_array[$j][9]);
-        //echo toLink($final_array[$j][9]);exit;
-        $edito = "<h2>".strip_tags(str_replace("'","''",toLink($final_array[$j][8])))."</h2><p>".paragraph(str_replace("'","''",toLink($final_array[$j][9])))."</p><h2>".strip_tags(str_replace("'","''",toLink($final_array[$j][10])))."</h2><p>".paragraph(str_replace("'","''",toLink($final_array[$j][11])))."</p><h2>".strip_tags(str_replace("'","''",toLink($final_array[$j][12])))."</h2><p>".paragraph(str_replace("'","''",toLink($final_array[$j][13])))."</p>";
-        //echo $edito;echo "<br>";
-        //echo paragraph(str_replace("'","''",toLink($final_array[$j][9])));exit;
-       $sql1 = "update cl_voyages_articles set voyages_edito = '".$edito."', voyages_intro = '".str_replace("'","''",$final_array[$j][7])."'  where voyages_article_id=".$final_array[$j][1];
+        //echo "<pre>"; print_r($final_array[$j]);
+        $edito = "<h2>".str_replace("'","''",toLink(strip_tags($final_array[$j][8])))."</h2>
+                  ".str_replace("'","''",toLink(paragraph($final_array[$j][9])))."
+                  <h2>".str_replace("'","''",toLink(strip_tags($final_array[$j][10])))."</h2>
+                  ".str_replace("'","''",toLink(paragraph($final_array[$j][11])))."
+                  <h2>".str_replace("'","''",toLink(strip_tags($final_array[$j][12])))."</h2>
+                  ".str_replace("'","''",toLink(paragraph($final_array[$j][13])));
+        //echo html_entity_decode($edito);exit;
+        $sql1 = "update cl_voyages_articles set voyages_edito = '".$edito."', voyages_intro = '".str_replace("'","''",strip_tags($final_array[$j][7]))."'  where voyages_article_id=".strip_tags($final_array[$j][1]);
+        //echo $sql1;exit;
         $dbfunctions->mysql_qry($sql1,1); 
           $finalData = array();
-          $finalData[] = (!empty($other_data))?$other_data['voyages_origin']:$final_array[$j][4];
-          $finalData[] = (!empty($other_data))?$other_data['voyages_destination']:$final_array[$j][5];
+          $finalData[] = (!empty($other_data))?$other_data['voyages_origin']:strip_tags($final_array[$j][4]);
+          $finalData[] = (!empty($other_data))?$other_data['voyages_destination']:strip_tags($final_array[$j][5]);
           $finalData[] = (!empty($other_data))?$other_data['voyages_parent']:" ";
           $finalData[] = (!empty($other_data))?$other_data['voyages_title']:" ";
-          $finalData[] = toLink($final_array[$j][7]);
+          $finalData[] = toLink(strip_tags($final_array[$j][7]));
           $finalData[] = (!empty($other_data))?$other_data['voyages_title_edito']:" ";
-          $para1=paragraph(toLink($final_array[$j][9]));
-          $para2=paragraph(toLink($final_array[$j][11]));
-          $para3=paragraph(toLink($final_array[$j][13]));
-          $finalData[] = "<h2>".strip_tags(toLink($final_array[$j][8]))."</h2><p>".$para1."</p><h2>".strip_tags(toLink($final_array[$j][10]))."</h2><p>".$para2."</p><h2>".strip_tags(toLink($final_array[$j][12]))."</h2><p>".$para3."</p>";
+          $para1=toLink(paragraph($final_array[$j][9]));
+          $para2=toLink(paragraph($final_array[$j][11]));
+          $para3=toLink(paragraph($final_array[$j][13]));
+          $finalData[] = "<h2>".toLink(strip_tags($final_array[$j][8]))."</h2>".$para1."<h2>".toLink(strip_tags($final_array[$j][10]))."</h2>".$para2."<h2>".toLink(strip_tags($final_array[$j][12]))."</h2>".$para3;
           //$finalData[] = $edito;
           $finalData[] = (!empty($other_data))?$other_data['voyages_canonical']:" ";
           $finalData[] = (!empty($other_data))?$other_data['voyages_meta_title']:" ";
@@ -190,36 +147,32 @@ if(isset($_POST['submit']))
           $finalData[] = "fr";
           $finalData[] = (!empty($other_data))?strtoupper($other_data['voyages_pays']):" ";
           $finalData[] = (!empty($other_data))?(($other_data['voyages_poids']==0)?" ":$other_data['voyages_poids']):" ";
-          $final_array[$j]=$finalData;
+          $newFinalArray[$j]=$finalData;
           $j++;
-
-        
-			}
+     	
+     }
 			
-			//echo "<pre>";print_r($final_array); exit;
+			//echo "<pre>";print_r($newFinalArray); exit;
 
       $rand="VoyagesSNCF-delivery-".uniqid()."-".date('d-m-y-h-m');
     	$srcPath=VOYAGES_WRITER_FILE_PATH."/dev2/".$rand."/";
 			$srcFile=VOYAGES_WRITER_FILE_PATH."/dev2/".$rand.".xlsx";
 			
-			//exit;
-			
-			writeXlsxVenereDev2($final_array,$srcFile);
+			writeXlsxVenereDev2($newFinalArray,$srcFile);
          
 		    
-            if(file_exists($srcFile)) {
+      if(file_exists($srcFile)) {
 			  header("Location:dev2.php?msg=success&folder=".$rand."&file=".$rand.".xlsx");
 			} else {
-				  
-				  header("Location:dev2.php?msg=error");
+	   	  header("Location:dev2.php?msg=error");
 			}
 		
             
-        }
-        else
-        {
-            header("Location:dev2.php?msg=file_error");
-        }
+  }
+  else
+  {
+      header("Location:dev2.php?msg=file_error");
+  }
     	
 }
 else
@@ -231,9 +184,13 @@ else
   */
     function toLink($val)
     {
-      $val1=preg_replace('/(\*\*)(.[^*]+)(\*\*)/', "<b>$2</b>", $val);
-      $val2=preg_replace('/(\*)(.[^*]+)(\*)/', "<i>$2</i>", $val1);
-      return preg_replace("/(\[(.+),(.+)\])/", "<a href='$3'>$2 </a>" , $val2);
+      $val=preg_replace('/(\*\*)(.[^*]+)(\*\*)/', "<b>$2</b>", $val);
+      $val=preg_replace('/(\*)(.[^*]+)(\*)/', "<i>$2</i>", $val);
+      //preg_match("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/",$val,$match);
+     // echo "<pre>"; print_r($match);
+      $val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href='$3'>$2</a>" , $val);
+      //$val=preg_replace("/(||||(.+),(.+)|||||)/", "<a href='$3'>$2 </a>" , $val);
+      return $val;
     }
 
    /* modify_content function
@@ -245,10 +202,7 @@ else
    */	
 
 function modify_content($value,$col){
-	//$value = ($col == 10) ? "<h1>".$value."</h1>" : $value;		
- //  $value = ($col == 8 ) ? "<h1>".$value."</h1>" : $value;
-	// $value = ($col == 9 || $col == 11 || $col == 13) ? "<h2>".$value."</h2>" : $value;
-	// $value = ($col == 10 || $col == 12 || $col == 14) ? "<p>".$value."</p>" : $value;
+
 	return $value;
 }	
 
@@ -302,29 +256,33 @@ $matches = array();
 //preg_match_all($pattern, $text, $matches);
 	//echo "<pre>";print_r($matches);exit;
 $matches=explode(']',$text);
-
+//echo "<pre>"; print_r($matches);
 $ind=1;
 $newArr=array();
 foreach($matches as $key => $value){
 	/* if($key != 1){ */ // Dont include second row of DOCX file as per specification
 	$value = str_replace("</w:tc>","]",$value);
-	$value = str_replace("<w:tc>","[",$value);
+	//$value = str_replace("<w:tc>","[",$value);
 	//echo $text2;
-	$pattern='/\[([^\]]*)\]/';
+	//$pattern='/\[([^\]]*)\]/';
 	//$htmldata.="<tr id='row_".$key."'>";
-	preg_match_all($pattern, $value, $matches2);
+	//preg_match_all($pattern, $value, $matches2);
+  $matches2=explode(']', $value);
+  //echo "<pre>"; print_r($matches2);
 	$arrData='';
 	//$htmldata.="<td >".$ind."</td>";
-	foreach($matches2[1] as $k=>$v){
-		
-		if($k > 0)
-		$arrData[]=read_docx_special_character_function(trim(strip_tags($v)));
+  //echo "<pre>"; print_r($matches2);
+	foreach($matches2 as $k=>$v){
+		$tempData=read_docx_special_character_function(trim($v));
+    $tempData=str_replace("|||||","]",$tempData);
+    $tempData=str_replace("||||","[",$tempData);
+    $arrData[]=$tempData;
       //$arrData[]=read_docx_special_character_function(trim(paragraph($v)));
     //$htmldata.="<td >".trim(strip_tags($v))."</td>";
 		
 	}
-  $arrData = str_replace("|||||","]",$arrData);
-	$arrData = str_replace("||||","[",$arrData);
+  //$arrData = str_replace("|||||","]",$arrData);
+	//$arrData = str_replace("||||","[",$arrData);
 	
 	$newArr[$ind]=$arrData;
 	//$htmldata.="</tr>";
@@ -343,30 +301,35 @@ return $newArr;
 
 function paragraph($text)
 {
-    
+    //echo $text;exit;
     $text = str_replace("[","||||",$text);
     $text = str_replace("]","|||||",$text);
     $text = str_replace("</w:p>","]",$text);
-   // $text = str_replace("<w:p>","[",$text);
+    
     $arr=explode(']', $text);
+   // echo "<pre>"; print_r($arr);
     $val = "";
-    //$text1=preg_replace("/(\[(.+)\])/", "<p>$2</p>" , $text);
-    //if(count($arr)>1){
-		foreach ($arr as $key => $value) {
-      if(count($arr)>1){
-        $val .= "<p>".$value."</p>";
+    
+    if(count($arr)>1){
+    	foreach ($arr as $key => $value)
+      { 
+        $value=strip_tags($value);
+        if($value!=''){
+          $val .= "<p>".$value."</p>";
+        }
       }
-		  else
-      {
-        $val .= $value;
-      }
-		}
-
-	//}
-
-    $val = str_replace("]","|||||",$val);
-    $val = str_replace("[","||||",$val);
-
+    }
+    else
+    {
+      $val=strip_tags($text);
+      $val=rtrim($val,']');
+      $val .= "<p>".$val."</p>";
+    }
+    //echo "STR<br>".$val;
+    $val = str_replace("|||||","]",$val);
+    $val = str_replace("||||","[",$val);
+    //exit;
+    //echo "END<br>".$val."<br>";
     //return strip_tags($val);
     return $val;
     //return strip_tags($text);
