@@ -418,7 +418,7 @@ class Tui
 	 				$cleanString11[2],
 	 				$cleanString12[0],
 	 				$cleanString12[2],
-	 				"<h3>".$cleanString10[1]."</h3><p>".$cleanString11[1]."</p><p>".$cleanString12[1]."</p>",
+	 				"<h3>".$cleanString10[1]."</h3>".$cleanString11[1]." ".$cleanString12[1],
 	 				"text"
 				);
 
@@ -445,7 +445,7 @@ class Tui
 	 				" ",
 	 				$clearString14[0],
 	 				$clearString14[2],
-	 				"<h3>".$clearString13[1]."</h3><p>".$clearString14[1]."</p>",
+	 				"<h3>".$clearString13[1]."</h3>".$clearString14[1],
 	 				"text"
 				);
 
@@ -471,7 +471,7 @@ class Tui
 	 				$clearString15[2],
 	 				$clearString16[0],
 	 				$clearString16[2],
-	 				"<p>".$clearString15[1]."</p><p>".$clearString16[1]."</p>",
+	 				$clearString15[1]." ".$clearString16[1],
 	 				"text"
 				);
 
@@ -497,7 +497,7 @@ class Tui
 	 				$clearString17[2],
 	 				$clearString18[0],
 	 				$clearString18[2],
-	 				"<p>".$clearString17[1] ."</p><p>".$clearString18[1]."</p>",
+	 				$clearString17[1] ." ".$clearString18[1],
 	 				"text"
 
 				);

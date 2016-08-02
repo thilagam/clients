@@ -116,11 +116,11 @@ if(isset($_POST['submit']))
         }
         
         //echo "<pre>"; print_r($final_array[$j]);
-        $edito = "<h2>".str_replace("'","''",toLink(strip_tags($final_array[$j][8])))."</h2>
+        $edito = "<h3>".str_replace("'","''",toLink(strip_tags($final_array[$j][8])))."</h3>
                   ".str_replace("'","''",toLink(paragraph($final_array[$j][9])))."
-                  <h2>".str_replace("'","''",toLink(strip_tags($final_array[$j][10])))."</h2>
+                  <h3>".str_replace("'","''",toLink(strip_tags($final_array[$j][10])))."</h3>
                   ".str_replace("'","''",toLink(paragraph($final_array[$j][11])))."
-                  <h2>".str_replace("'","''",toLink(strip_tags($final_array[$j][12])))."</h2>
+                  <h3>".str_replace("'","''",toLink(strip_tags($final_array[$j][12])))."</h3>
                   ".str_replace("'","''",toLink(paragraph($final_array[$j][13])));
         //echo html_entity_decode($edito);exit;
         $sql1 = "update cl_voyages_articles set voyages_edito = '".$edito."', voyages_intro = '".str_replace("'","''",strip_tags($final_array[$j][7]))."'  where voyages_article_id=".strip_tags($final_array[$j][1]);
@@ -136,7 +136,7 @@ if(isset($_POST['submit']))
           $para1=toLink(paragraph($final_array[$j][9]));
           $para2=toLink(paragraph($final_array[$j][11]));
           $para3=toLink(paragraph($final_array[$j][13]));
-          $finalData[] = "<h2>".toLink(strip_tags($final_array[$j][8]))."</h2>".$para1."<h2>".toLink(strip_tags($final_array[$j][10]))."</h2>".$para2."<h2>".toLink(strip_tags($final_array[$j][12]))."</h2>".$para3;
+          $finalData[] = "<h3>".toLink(strip_tags($final_array[$j][8]))."</h3>".$para1."<h3>".toLink(strip_tags($final_array[$j][10]))."</h3>".$para2."<h3>".toLink(strip_tags($final_array[$j][12]))."</h3>".$para3;
           //$finalData[] = $edito;
           $finalData[] = (!empty($other_data))?$other_data['voyages_canonical']:" ";
           $finalData[] = (!empty($other_data))?$other_data['voyages_meta_title']:" ";
@@ -184,11 +184,13 @@ else
   */
     function toLink($val)
     {
-      $val=preg_replace('/(\*\*)(.[^*]+)(\*\*)/', "<b>$2</b>", $val);
+      //$val=preg_replace('/(\*\*)(.[^*]+)(\*\*)/', "<b>$2</b>", $val);
+      $val=preg_replace('/(\*\*)(.[^*]+)(\*\*)/', "<strong>$2</strong>", $val);
       $val=preg_replace('/(\*)(.[^*]+)(\*)/', "<i>$2</i>", $val);
       //preg_match("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/",$val,$match);
      // echo "<pre>"; print_r($match);
-      $val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href='$3'>$2</a>" , $val);
+      //$val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href='$3'>$2</a>" , $val);
+      $val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href=".utf8_decode("«$3»")." >$2</a>" , $val);
       //$val=preg_replace("/(||||(.+),(.+)|||||)/", "<a href='$3'>$2 </a>" , $val);
       return $val;
     }
