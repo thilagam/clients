@@ -122,6 +122,7 @@ if(isset($_POST['submit']))
                   ".str_replace("'","''",toLink(paragraph($final_array[$j][11])))."
                   <h3>".str_replace("'","''",toLink(strip_tags($final_array[$j][12])))."</h3>
                   ".str_replace("'","''",toLink(paragraph($final_array[$j][13])));
+		//echo $edito;exit;
         //echo html_entity_decode($edito);exit;
         $sql1 = "update cl_voyages_articles set voyages_edito = '".$edito."', voyages_intro = '".str_replace("'","''",strip_tags($final_array[$j][7]))."'  where voyages_article_id=".strip_tags($final_array[$j][1]);
         //echo $sql1;exit;
@@ -182,16 +183,21 @@ else
     To convert [click here,link] to Actual link
 
   */
+ 
     function toLink($val)
     {
       //$val=preg_replace('/(\*\*)(.[^*]+)(\*\*)/', "<b>$2</b>", $val);
       $val=preg_replace('/(\*\*)(.[^*]+)(\*\*)/', "<strong>$2</strong>", $val);
       $val=preg_replace('/(\*)(.[^*]+)(\*)/', "<i>$2</i>", $val);
-      //preg_match("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/",$val,$match);
-     // echo "<pre>"; print_r($match);
+     // preg_match("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/",$val,$match);
+		//echo "<pre>"; print_r($match);
+		//echo "START".trim($match[3])."END<br>";
       //$val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href='$3'>$2</a>" , $val);
-      $val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href=".utf8_decode("«$3»")." >$2</a>" , $val);
-      //$val=preg_replace("/(||||(.+),(.+)|||||)/", "<a href='$3'>$2 </a>" , $val);
+      //$val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href=".utf8_decode("«$3»")." >$2</a>" , $val);
+	  $val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href=«##".trim('$3')."##»>$2</a>" , $val);
+	  $val=str_replace("## ","",$val);
+	  $val=str_replace(" ##","",$val);
+	//$val=preg_replace("/(||||(.+),(.+)|||||)/", "<a href='$3'>$2 </a>" , $val);
       return $val;
     }
 
