@@ -73,6 +73,7 @@ if(isset($_POST['submit']))
 				$final_array[$x+1]=array_values($final_array[$x+1]);
 				$x++;			
 			}
+			//echo "<pre>";print_r($final_array);exit;
 		/* CLOSE XSLX READ */
 		
        /* ZIP & RAR READ */
@@ -117,24 +118,29 @@ if(isset($_POST['submit']))
 			foreach($final_array as $key=>$fa){
 				if($key > 1){					
 					if($ext == "rar")
-						$path = $unzip_dir."/".str_replace(" ","_",trim($fa[0])).".docx"; //exit;
+						$path = $unzip_dir."/".str_replace(" ","_",trim($fa[1])).".docx"; //exit;
 					else
-						$path = $unzip_dir."/".str_replace(" ","_",trim($basiclib->normaliseUrlString($fa[0]))).".docx"; //exit;
+						$path = $unzip_dir."/".str_replace(" ","_",trim($basiclib->normaliseUrlString($fa[1]))).".docx"; //exit;
 					//echo "<br />";	
 					if(file_exists($path)){
 						//echo $path;
-						$column_C_D = process_xmlData(readDocx($path),$fa[0]);
-						//echo "<br />";
-						$final_array[$key][2] = trim($column_C_D); // H2 tag values + Content tag values
+						$column_C_D = process_xmlData(readDocx($path),$fa[1]);
+						$cols = explode("&lt;/h2&gt;",$column_C_D);
+						//$final_array[$key][3] = trim($column_C_D); // H2 tag values + Content tag values
 						//$final_array[$key][3] = trim($column_C_D[1]); // Content tag values
+						if($cols[0]){
+							$final_array[$key][3]="<h2>".trim(str_replace("&lt;h2&gt;","",$cols[0]))."</h2>";
+						}
+						else{
+							$final_array[$key][3]=" ";
+						}
+						$final_array[$key][4]=trim($cols[1]);
 					}	
 				}	
 			}
 			//exit;
-					
-			//echo "<pre>";print_r($final_array); //exit;
-
-            $rand="laredoute-delivery-".uniqid();
+			//echo "<pre>";print_r($final_array);exit;
+			 $rand="laredoute-delivery-".uniqid();
     	    $srcPath=LA_REDOUTE_WRITER_FILE_PATH."/dev1/".$rand."/";
 			$srcFile=LA_REDOUTE_WRITER_FILE_PATH."/dev1/".$rand.".xlsx";
 			
@@ -261,6 +267,7 @@ function readDocx($filePath) {
 	  function writeXlsxLaRedouteNewDev1($data,$file_path)
     {
 		
+		//echo "<pre>";print_r($data);exit;
 		//echo "Debug 3<pre>"; print_r ($colors); echo "</pre>";	
 		
 		$anchorCols = array_filter(explode(",", $anchor_cols)) ;
