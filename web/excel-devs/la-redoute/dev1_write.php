@@ -125,11 +125,14 @@ if(isset($_POST['submit']))
 					if(file_exists($path)){
 						//echo $path;
 						$column_C_D = process_xmlData(readDocx($path),$fa[1]);
-						$cols = explode("&lt;/h2&gt;",$column_C_D);
+						//$cols = explode("&lt;/h2&gt;",$column_C_D);
+						$cols = explode("</h2>",$column_C_D);
+						//echo "<pre>";print_r($cols);
+						//echo "<pre>";print_r($cols);
 						//$final_array[$key][3] = trim($column_C_D); // H2 tag values + Content tag values
 						//$final_array[$key][3] = trim($column_C_D[1]); // Content tag values
 						if($cols[0]){
-							$final_array[$key][3]="<h2>".trim(str_replace("&lt;h2&gt;","",$cols[0]))."</h2>";
+							$final_array[$key][3]="<h2>".trim(str_replace("<h2>","",$cols[0]))."</h2>";
 						}
 						else{
 							$final_array[$key][3]=" ";
