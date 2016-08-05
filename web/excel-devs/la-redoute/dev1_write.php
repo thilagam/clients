@@ -113,7 +113,16 @@ if(isset($_POST['submit']))
 			//echo $unzip_dir;
             //$docx_files = all_docx_files($unzip_dir);
             //echo "<pre>";print_r ($final_array); echo "</pre>";     exit;			
-			
+			/*
+				* Author:Thilagam
+
+				* Date of comment: 5/8/2016
+
+				* As per the trello ticket https://trello.com/c/2YIW80kW/153-la-redoute-update
+
+				* Initially $fa[0] was used in place of $fa[1]
+
+			*/
 			
 			foreach($final_array as $key=>$fa){
 				if($key > 1){					
@@ -123,14 +132,13 @@ if(isset($_POST['submit']))
 						$path = $unzip_dir."/".str_replace(" ","_",trim($basiclib->normaliseUrlString($fa[1]))).".docx"; //exit;
 					//echo "<br />";	
 					if(file_exists($path)){
-						//echo $path;
 						$column_C_D = process_xmlData(readDocx($path),$fa[1]);
 						//$cols = explode("&lt;/h2&gt;",$column_C_D);
-						$cols = explode("</h2>",$column_C_D);
 						//echo "<pre>";print_r($cols);
 						//echo "<pre>";print_r($cols);
 						//$final_array[$key][3] = trim($column_C_D); // H2 tag values + Content tag values
 						//$final_array[$key][3] = trim($column_C_D[1]); // Content tag values
+						$cols = explode("</h2>",$column_C_D);
 						if($cols[0]){
 							$final_array[$key][3]="<h2>".trim(str_replace("<h2>","",$cols[0]))."</h2>";
 						}

@@ -385,6 +385,16 @@ class Tui
 			 	$sheetRows=array($row_1,$row_2,$row_3,$row_4,$row_5);	
 
 	 			break;
+	 			 /*
+					* Author: Thilagam
+
+					* Date of comment: 5/8/2016
+
+					* https://trello.com/c/xt3oD2aE/139-tui-themes-input-output
+
+					* https://trello.com/c/N6MwZ9mg/125-tui-characters-numbers-checking-dev-docx-to-xlsx
+
+	 			 */
 	 		case 3:
 	 			$cleanString10 = $this->validateAndCleanHtml($rowData[9][2],$validations[8]);
 	 			$cleanString11 = $this->validateAndCleanHtml($rowData[10][2],$validations[9]);

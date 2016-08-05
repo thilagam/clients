@@ -94,7 +94,18 @@ if(isset($_POST['submit']))
 			$check_empty = "";
 						
 			$newFinalArray=array(array("ORIGINE","DESTINATION","PARENT","TITRE","INTRO","TITRE_EDITO","EDITO","CANONICAL","META_TITRE","META_DESC","META_INDEX","DATA_SUMO","CATEGORIE","LANGUE","PAYS","POIDS"));
-			foreach($docx_files as $lkey=>$docx)
+			
+      /*
+        * Author: Thilagam
+
+        * Date of comment: 5/8/2016
+
+        * As per the Trello card:https://trello.com/c/yppv7Se4/143-voyages-sncf-dev-2-for-delivery,
+        https://trello.com/c/hIFLftoe/155-voyages-sncf-update-on-delivery-dev
+
+      */
+
+      foreach($docx_files as $lkey=>$docx)
       {
 				
 				$dummy_array = process_xmlData(readDocx($docx));
