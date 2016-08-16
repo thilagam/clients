@@ -704,6 +704,10 @@ define("SEO_SALOMON_WRITER_FILE_PATH", SEO_SALOMON_PATH."/writer-files");
 define("LA_REDOUTE_PATH", ROOT_PATH."/excel-devs/la-redoute");
 define("LA_REDOUTE_WRITER_FILE_PATH", LA_REDOUTE_PATH."/writer-files");
 
+//Toyr's Run
+define("TOYR_PATH",ROOT_PATH."/excel-devs/toyr");
+define("TOYR_WRITER_FILE_PATH",TOYR_PATH."/writer-files");
+
 //InterRent
 define("INTERRENT_PATH", ROOT_PATH."/excel-devs/interrent");
 define("INTERRENT_WRITER_FILE_PATH", INTERRENT_PATH."/writer-files");

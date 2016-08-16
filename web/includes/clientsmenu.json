@@ -21,6 +21,10 @@
                 {
                     "href": "dev1",
                     "label": "Generate writer file .docx > .xlsx (URL)"
+                },
+                {
+                    "href":"template",
+                    "label":"Template Creation"
                 }
             ]
         },
@@ -769,6 +773,18 @@
 					"label": "View Pictures on URL"
 				}
 			]
+        },
+        {
+            "h3": "TOYR",
+            "menus": "TOYR_MENU",
+            "client": "TOYR",
+            "base": "toyr",
+            "li": [
+                {
+                    "href": "dev1",
+                    "label": "Template Creation"
+                }
+            ]
         },
         {
             "h3": "TRANSLATION",
@@ -1573,5 +1589,6 @@
 				}
 			]
         }
+
     ]
 }
