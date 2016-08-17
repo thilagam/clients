@@ -399,13 +399,17 @@ class Tui
 	 			$cleanString10 = $this->validateAndCleanHtml($rowData[9][2],$validations[8]);
 	 			$cleanString11 = $this->validateAndCleanHtml($rowData[10][2],$validations[9]);
 	 			$cleanString12 = $this->validateAndCleanHtml($rowData[11][2],$validations[10]);
+
 	 			$clearString13 = $this->validateAndCleanHtml($rowData[13][2],$validations[12]);
 	 			$clearString14 = $this->validateAndCleanHtml($rowData[14][2],$validations[13]);
-	 			$clearString15 = $this->validateAndCleanHtml($rowData[16][2],$validations[15]);
+	 			$clearString15 = $this->validateAndCleanHtml($rowData[15][2],$validations[14]);
+
 	 			$clearString16 = $this->validateAndCleanHtml($rowData[17][2],$validations[16]);
-	 			$clearString17 = $this->validateAndCleanHtml($rowData[19][2],$validations[18]);
+	 			$clearString17 = $this->validateAndCleanHtml($rowData[18][2],$validations[17]);
+
 	 			$clearString18 = $this->validateAndCleanHtml($rowData[20][2],$validations[19]);
-	 			
+	 			$clearString19 = $this->validateAndCleanHtml($rowData[21][2],$validations[20]);
+
 	 			$row_1 = array(
 	 				strip_tags($rowData[1][2]),
 	 				//strip_tags($rowData[3][2]),
@@ -431,9 +435,7 @@ class Tui
 	 				"<h3>".$cleanString10[1]."</h3>".$cleanString11[1]." ".$cleanString12[1],
 	 				"text"
 				);
-
-
-				$row_2 = array(
+	 			$row_2 = array(
 					strip_tags($rowData[1][2]),
 	 				//strip_tags($rowData[3][2]),
 	 				"TUI",
@@ -451,14 +453,13 @@ class Tui
 	 				strip_tags($rowData[12][2]),
 	 				$clearString13[0],
 	 				$clearString13[2],
-	 				" ",
-	 				" ",
 	 				$clearString14[0],
 	 				$clearString14[2],
-	 				"<h3>".$clearString13[1]."</h3>".$clearString14[1],
+	 				$clearString15[0],
+	 				$clearString15[2],
+	 				"<h3>".$clearString13[1]."</h3>".$clearString14[1]." ".$cleanString15[1],
 	 				"text"
 				);
-
 				$row_3 = array(
 					strip_tags($rowData[1][2]),
 	 				//strip_tags($rowData[3][2]),
@@ -468,20 +469,20 @@ class Tui
 	 				$basiclib->normaliseUrlString(strip_tags(strtolower($rowData[6][2]))),
 	 				//strip_tags($rowData[7][2]),	
 	 				//"Nos destinations CodeGroupe"."(".$validations[15]."+".$validations[16]."caractères )",
-	 				strip_tags($rowData[15][2]),
+	 				strip_tags($rowData[16][2]),
 	 				2,
 	 				1,
 	 				1,
 	 				1,
 	 				1,
-	 				strip_tags($rowData[15][2]),
+	 				strip_tags($rowData[16][2]),
 	 				" ",
 	 				" ",
-	 				$clearString15[0],
-	 				$clearString15[2],
 	 				$clearString16[0],
 	 				$clearString16[2],
-	 				$clearString15[1]." ".$clearString16[1],
+	 				$clearString17[0],
+	 				$clearString17[2],
+	 				$clearString16[1]." ".$clearString17[1],
 	 				"text"
 				);
 
@@ -494,20 +495,20 @@ class Tui
 	 				$basiclib->normaliseUrlString(strip_tags(strtolower($rowData[6][2]))),
 	 				//strip_tags($rowData[7][2]),	
 	 				//"Nos destinations CodeGroupe"."(".$validations[18]."+".$validations[19]."caractères )",
-	 				strip_tags($rowData[18][2]),
+	 				strip_tags($rowData[19][2]),
 	 				3,
 	 				1,
 	 				1,
 	 				1,
 	 				1,
-	 				strip_tags($rowData[18][2]),
+	 				strip_tags($rowData[19][2]),
 	 				" ",
 	 				" ",
-	 				$clearString17[0],
-	 				$clearString17[2],
 	 				$clearString18[0],
 	 				$clearString18[2],
-	 				$clearString17[1] ." ".$clearString18[1],
+	 				$clearString19[0],
+	 				$clearString19[2],
+	 				$clearString18[1] ." ".$clearString19[1],
 	 				"text"
 
 				);
@@ -516,7 +517,7 @@ class Tui
 	 		
 	 	}
 	 	
-	 //	echo "<pre>"; print_r($sheetRows);exit;
+	 //echo "<pre>"; print_r($sheetRows);exit;
 	 	return $sheetRows;
 
 
