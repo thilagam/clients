@@ -5,7 +5,7 @@ define("INCLUDE_PATH",ROOT_PATH."/includes");
 require_once(INCLUDE_PATH.'/basiclib.php');
 include_once(INCLUDE_PATH."/config_path.php");
 require_once(INCLUDE_PATH."/PHPWord.php");
-include_once(VOYAGES_PATH."/dbfunctions.php");
+include_once(DECATHLON_PATH."/dbfunctions.php");
 /**
  * Decathlon Lib is a PHP-functions library used in Decathlon Devs. It is collection of commonly used functions for Interrent devs
  *

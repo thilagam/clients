@@ -101,11 +101,11 @@ if(isset($_POST['submit']))
 			mkdir($srcPath) ;
 			chmod($srcPath,0777) ;
             $info = pathinfo($_FILES['userfile1']['name']);
-    	  	$headers[0] = "PAGE TYPE";
+            $headers[0] = "URL";
+    	  	$headers[1] = "PAGE TYPE";
     	  	foreach($final_array[3] as $key=>$value){
-    	  		$headers[$key+1] = $value;
+    	  		$headers[$key+2] = $value;
     	  	}
-    	  	echo "<pre>";print_r($headers);exit;
     	    /*$l=0;
    	   
     	   foreach($final_array as $key=>$arr){
@@ -133,7 +133,19 @@ if(isset($_POST['submit']))
 			  $l++;
 		   }
 		   */
-		   echo "<pre>";print_r($final_array);exit;
+		   $data = array();
+		   $header = array("URL","PAGE TYPE","SKN","UID","PID","URL","NOM DE L'ARTICLE","LONGUE DESCRIPTION","MOTS CLES"); 
+		   $data[] = array($final_array[5][4],$final_array[6][0],$final_array[6][1],$final_array[6][2],$final_array[6][3],$final_array[6][4],$final_array[6][5],$final_array[6][6],$final_array[6][7]);
+		   $data[] = array($final_array[5][4],$final_array[7][0],$final_array[7][1],$final_array[7][2],$final_array[7][3],$final_array[7][4],$final_array[7][5],$final_array[7][6],$final_array[7][7]);
+		   $data[] = array($final_array[9][4],$final_array[10][0],$final_array[10][1],$final_array[10][2],$final_array[10][3],$final_array[10][4],$final_array[10][5],$final_array[10][6],$final_array[10][7]);
+		   $data[] = array($final_array[9][4],$final_array[11][0],$final_array[11][1],$final_array[11][2],$final_array[11][3],$final_array[11][4],$final_array[11][5],$final_array[11][6],$final_array[11][7]);
+		   $data[] = array($final_array[12][4],$final_array[13][0],$final_array[13][1],$final_array[13][2],$final_array[13][3],$final_array[13][4],$final_array[13][5],$final_array[13][6],$final_array[13][7]);
+		   $data[] = array($final_array[12][4],$final_array[14][0],$final_array[14][1],$final_array[14][2],$final_array[14][3],$final_array[14][4],$final_array[14][5],$final_array[14][6],$final_array[14][7]);
+		   foreach($data as $key=>$value)
+		   {
+		   	$docxfile = create_docx_file($header,$value,$srcPath);
+		   }
+		   echo "<pre>";print_r($data);exit;
 		 writeXlsxVenereNewDev1($final_array,$srcFile,$fill_colors); // call writer function here
 		  // writeMultiSheets(array($final_array), $srcFile,array('sheet1') ,$sheetnames,$colors); 
             if(file_exists($srcFile)) {
@@ -173,22 +185,6 @@ else
 	   $array_data1[6]= $array_data[5];
 	   $array_data1[7]= $array_data[6];
 	  
-	   /*if($hd == 1) { $array_data1[1]=1; } else if($hd == 2) { $array_data1[1]="Article ID"; } else { $array_data1[1]=""; }   
-	   
-	   if($hd == 1) { $array_data1[8]=8; } else if($hd == 2) { $array_data1[8]="Titre 1"; } else { $array_data1[8]=''; }
-	   
-	   if($hd == 1) { $array_data1[10]=10; } else if($hd == 2) { $array_data1[10]="Titre 2"; } else { $array_data1[10]=''; }
-	    
-	   if($hd == 1) { $array_data1[12]=12; } else if($hd == 2) { $array_data1[12]="Titre 3"; } else { $array_data1[11]=''; }
-	   
-	   
-	   if($hd == 1) { $array_data1[9]=9; } else if($hd == 2) { $array_data1[9]="Paragraphe 1 \n 200 mots (+/- 20 mots)"; } else { $array_data1[9]=''; }
-	   
-	   if($hd == 1) { $array_data1[11]=11; } else if($hd == 2) { $array_data1[11]="Paragraphe 2 \n 200 mots (+/- 20 mots)"; } else { $array_data1[11]=''; }
-	    
-	   if($hd == 1) { $array_data1[13]=13; } else if($hd == 2) { $array_data1[13]="Paragraphe 3 \n 100 mots (+/- 20 mots)"; } else { $array_data1[12]=''; }
-	   
-	   */
 	   return $array_data1;
    }
    
@@ -239,7 +235,7 @@ else
    *  
    */
 	
-	 function create_docx_file($header,$header_2,$data,$path,$fill_colors,$key){
+	 /*function create_docx_file($header,$header_2,$data,$path,$fill_colors,$key){
 	
 	   $header_color= array();
 	   $header_2_color= array();
@@ -248,16 +244,8 @@ else
 	   $header_color = columns_color_included_for_docx($fill_colors[1]);
 	   $header_2_color = columns_color_included_for_docx($fill_colors[2]);
 	   $data_color = columns_color_included_for_docx($fill_colors[1]);
-	  //echo "<pre>";print_r($data_color);exit;
-	  //echo sizeof($header)."/".sizeof($path);
-	  //echo $key;
-	  //echo "Debug 3<pre>"; print_r ($header_color); echo "</pre>";
-	 // echo "Debug 3<pre>"; print_r ($header_color); echo "</pre>";
-	 // echo "Debug 3<pre>"; print_r ($header_2_color); echo "</pre>";
-	 // echo "Debug 3<pre>"; print_r ($data); echo "</pre>"; 	exit;	
-	  
-	
-	    $PHPWord = new PHPWord();
+	   
+	   $PHPWord = new PHPWord();
         // document style orientation and margin 
         $sectionStyle = array('orientation' => 'landscape', 'marginLeft'=>600, 'marginRight'=>600, 'marginTop'=>600, 'marginBottom'=>600, 'colsNum' => 2);
         $section = $PHPWord->createSection($sectionStyle);
@@ -324,7 +312,33 @@ else
 		$objWriter->save($path.$file_name_docx.".docx");
 		//exit; 
 		 return $file_name_docx.".docx";
-	 }	 
+	 }	 */
+
+	 function create_docx_file($header,$value,$path)
+	 {
+	 	$PHPWord = new PHPWord();
+        // document style orientation and margin 
+        $sectionStyle = array('orientation' => 'landscape', 'marginLeft'=>600, 'marginRight'=>600, 'marginTop'=>600, 'marginBottom'=>600, 'colsNum' => 2);
+        $section = $PHPWord->createSection($sectionStyle);
+
+		// Define table style arrays
+		$styleTable = array('borderSize'=>6, 'borderColor'=>'006699', 'cellMargin'=>80, 'width'=>100);
+
+		// Define font style for first row
+		$fontStyle = array('bold'=>true, 'align'=>'center');
+
+		// Add table style
+		$PHPWord->addTableStyle('myOwnTableStyle', $styleTable);
+
+		// Add table
+		$table = $section->addTable('myOwnTableStyle');
+
+       $styleCell2Row = array('bgColor'=>'ffff66');
+       $styleCell3RowData = array('align'=>'center');
+       $styleCellRemaining = array('bgColor'=>'0070c0');
+
+       
+	 }
 	 
    /* writeXlsxVenereNewDev1 function
    * 

@@ -787,6 +787,34 @@
             ]
         },
         {
+            "h3": "TUI",
+            "menus": "TUI_MENU",
+            "client": "TUI",
+            "base": "tui",
+            "li": [
+                {
+                    "href": "index",
+                    "label": "Template Creation"
+                }
+            ]
+        },
+        {
+            "h3": "VOYAGES",
+            "menus": "VOYAGES_MENU",
+            "client": "VOYAGES",
+            "base": "voyages",
+			"li": [
+				{
+					"href": "dev1",
+					"label": "xlsx to mulidocx"
+				},
+				{
+					"href": "dev2",
+					"label": "Delivery file .zip (.docx)  > .xlsx"
+				}
+			]
+        },
+        {
             "h3": "TRANSLATION",
             "menus": "TRANSLATION_MENU",
             "client": "TRANSLATION",
@@ -806,6 +834,7 @@
 				}
 			]
         },
+
         {
             "h3": "CDC",
             "menus": "CDC_MENU",

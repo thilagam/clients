@@ -666,6 +666,7 @@ define("DECATHLON_PATH", ROOT_PATH."/excel-devs/decathlon");
 define("DECATHLON_XML_FILE_PATH", DECATHLON_PATH."/xml-files");
 define("DECATHLON_XML_FILE_PATH2", DECATHLON_PATH."/xml");
 define("DECATHLON_XML_FILE_PATH3", DECATHLON_PATH."/xlsx-files");
+define("DECATHLON_WRITER_FILE_PATH", DECATHLON_PATH."/writer-files");
 
 define("MENU_CONFIG_JSON", SITE_URL . "/includes/clientsmenu.json");
 define("MENU_URL", SITE_URL . "/excel-devs/");

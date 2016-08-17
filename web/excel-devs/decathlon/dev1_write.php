@@ -297,6 +297,7 @@ else
 	
 	 function create_docx_file($header,$header_2,$data,$path,$fill_colors,$key){
 	
+	
 	   $header_color= array();
 	   $header_2_color= array();
 	   $data_color= array();
