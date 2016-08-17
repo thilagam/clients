@@ -124,6 +124,7 @@ class Tui
 					$pointStart=0;
 				}else{
 					$value=($value!='')?"<p>".$value."</p>":'';
+					//$value=($value!='')?$value:'';
 				}
 			}
 			$newArr[]=$value;
@@ -432,7 +433,7 @@ class Tui
 	 				$cleanString11[2],
 	 				$cleanString12[0],
 	 				$cleanString12[2],
-	 				"<h3>".$cleanString10[1]."</h3>".$cleanString11[1]." ".$cleanString12[1],
+	 				"<h3>".strip_tags($cleanString10[1])."</h3>".$cleanString11[1]." ".$cleanString12[1],
 	 				"text"
 				);
 	 			$row_2 = array(
@@ -457,7 +458,7 @@ class Tui
 	 				$clearString14[2],
 	 				$clearString15[0],
 	 				$clearString15[2],
-	 				"<h3>".$clearString13[1]."</h3>".$clearString14[1]." ".$clearString15[1],
+	 				"<h3>".strip_tags($clearString13[1])."</h3>".$clearString14[1]." ".$clearString15[1],
 	 				"text"
 				);
 				$row_3 = array(

@@ -22,24 +22,37 @@ include_once(INCLUDE_PATH."/left-menu.php");
 ?>
 <script type="text/javascript" src="<?=SITE_URL?>/js/bootstrap-select.min.js"></script>
 <div class="span10 content">    
-    <h2 class="heading">Toyr's run xlsx to multiDocx</h2>        
+    <h2 class="heading">Toyr xlsx to multiDocx</h2>        
     <div class="span11">
             <div class="alert alert-info">
                 <strong>Generate writers file .xlsx > . docx (URL)</strong>
             </div>
         <form method="POST" class="form-horizontal" action="dev1_process.php" name="importexcel"  ENCTYPE="multipart/form-data" onsubmit="return checkfile();">
             <div class="control-group">
-                <label class="control-label">Toyr's run XLSX / XLSX : </label>
+                <label class="control-label">Toyr XLSX : </label>
                 <div class="controls">
                     <input type="file" id="userfile1" name="userfile1">                   
                 </div>
             </div>
-            
+            <div class="control-group">
+                <label class="control-label">Select Langauage : </label>
+                <div class="controls">
+                    <select name='lang' id='lang' class="span3">
+                        <option value=" ">Select language</option>
+                        <option value="FR" selected>FR</option>
+                        <option value="UK">UK</option>
+                        <option value="US">US</option>
+                        <option value="DE">DE</option>
+                        <option value="IT">IT</option>
+                        <option value="ES">ES</option>
+                    </select>                 
+                </div>
+            </div>
             <div class='clearfix'></div>
-			
+            
             <div class="control-group">
                 <div class="controls">
-					<input type='hidden' name='op' value='xlsx' id='opformat'>                  
+                    <input type='hidden' name='op' value='xlsx' id='opformat'>                  
                     <button type="submit" value="Upload" name="submit" class="btn btn-primary">Upload</button>
                 </div>
             </div>

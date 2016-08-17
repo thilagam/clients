@@ -1,6 +1,6 @@
 <?php
 /**
- * Venere Writer file Creates Multiple doc files from single xlsx file
+ * Toyr file Creates Multiple doc files from single xlsx file
  *
  * PHP version 5
  * 
@@ -12,16 +12,26 @@
  */
 
 ob_start();
+//header('Content-Type: text/html; charset=utf-8');
 define("ROOT_PATH", $_SERVER['DOCUMENT_ROOT']);
 define("INCLUDE_PATH",ROOT_PATH."/includes");
-ini_set('display_errors', 1);
 
+ini_set('display_errors', 1);
+/**
+ * Include Files Here
+ * */
 include_once(INCLUDE_PATH."/config_path.php");
 include_once(INCLUDE_PATH."/common_functions.php");
 include_once(INCLUDE_PATH."/basiclib.php");
+
 include_once(INCLUDE_PATH."/PHPWord.php");
+include_once(TOYR_PATH."/toyr.php");
+
 include_once("titles.php");
 
+/**
+ *	Code To Download Files after it gets Generated
+ * */
 if(isset($_GET['action']) && $_GET['action']=='download' && isset($_GET['file']))
 	if(pathinfo($_GET['file'], PATHINFO_EXTENSION)=='zip'){
 		odownloadZIP($_GET['file'], TOYR_WRITER_FILE_PATH."/dev1/", "dev1.php") ;
@@ -38,6 +48,7 @@ if(isset($_POST['submit']))
     //echo $lang;
 	/*Create basic lib instance*/
     $basiclib=new basiclib();
+    $toyr=new toyr();
 
     
     require_once(INCLUDE_PATH."/reader.php");
@@ -52,29 +63,9 @@ if(isset($_POST['submit']))
 		/**
 		 *	if Code block to extract xls/Xlsx Containt in Array 
 		 * */
-        if($file1['extension'] == 'xls')
+        if(strtolower($file1['extension']) == 'xlsx')
         {
-        $data2 = new Spreadsheet_Excel_Reader();
-		$data2->setOutputEncoding('Windows-1252');
-		$data2->read($_FILES['userfile1']['tmp_name']);
-		$columns=$data2->sheets[0]['numCols'];
-
-		$x=1;           
-		while($x<=$data2->sheets[0]['numRows']) {
-			$y=1;               
-			while($y<=$data2->sheets[0]['numCols']) {
-
-				$data2->sheets[0]['cells'][$x][$y]=str_replace("�","'",$data2->sheets[0]['cells'][$x][$y]);
-				$final_array[$x][$y-1]=isset($data2->sheets[0]['cells'][$x][$y]) ? $data2->sheets[0]['cells'][$x][$y] : '';        
-			    $y++;
-			}
-			$final_array[$x]=array_values($final_array[$x]);
-			$x++;
-		}
-
-        }
-        else
-        {
+       
             $xls1Arr  = $basiclib->xlsx_read($_FILES['userfile1']['tmp_name']) ;
 			$x=0;           
 			while($x<sizeof($xls1Arr[0][0])) {
@@ -93,67 +84,58 @@ if(isset($_POST['submit']))
         }
         
         $fill_colors = get_color_from_excel($_FILES['userfile1']['tmp_name']);
-        
-      	//echo "<pre>";print_r ($fill_colors); echo "</pre>";exit;
-        
-
-		
+       
         /**
          * Check if array is not empty and process
          * */
         if(sizeof($final_array)>0)    
         {
           	
-          	$rand="toyr"."-".uniqid()."-".date('d-m-y-h-m');
-    	    $srcPath=TOYR_WRITER_FILE_PATH."/dev1/".$rand."/";
-			$srcFile=TOYR_WRITER_FILE_PATH."/dev1/".$rand."/".$rand.".xlsx";
-//			$srcFileZip=HOTELS_WRITER_FILE_PATH2."/dev1/".$rand.".zip";
+	      	$rand="toyr-".$lang."-".uniqid()."-".date('d-m-y-h-m');
+		    $srcPath=TOYR_WRITER_FILE_PATH."/dev1/".$rand."/";
+		    $srcFile=TOYR_WRITER_FILE_PATH."/dev1/".$rand."/".$rand.".xlsx";
+	//			$srcFileZip=HOTELS_WRITER_FILE_PATH2."/dev1/".$rand.".zip";
 			
 			mkdir($srcPath) ;
 			chmod($srcPath,0777) ;
-          	//echo $srcPath;exit;
-            $info = pathinfo($_FILES['userfile1']['name']);
+	      	//echo $srcPath;exit;
+	        $info = pathinfo($_FILES['userfile1']['name']);
     	  
-    	  $header = array();
-    	  $header_2 = array();
-    	  $data = array();
-    	  
-    	  $l=0;
+			$header = array();
+			$header_2 = array();
+			$data = array(); 
 
-			//echo "<pre>";print_r($final_array);exit;
-			$header = $final_array[1];
-   	   		//echo "<pre>";print_r($header);exit;
-    	   foreach($final_array as $key=>$arr){
-    	   	if($key > 2){
-    	   		$docxfile = create_docx_file($header,$arr,$srcPath,$fill_colors,$key);
-    	   	}
-	         /* //echo "<pre>";  
-			  if($key == 1){
-				   $header = columns_included_for_docx($arr,1,$titles,$lang);
-				  // print_r($header);
-				   array_unshift($final_array[$key], "0");
-				  
-			  }else if($key == 2){
-				   $header_2 = columns_included_for_docx($arr,2,$titles,$lang);
+			$l=0;
+			foreach($final_array as $key=>$arr){
+				//echo "<pre>";  
+				if($key == 1){
+				   $header = $toyr->docxColumns($arr,1,$titles,$lang);
+				  //print_r($header);exit;
 				   array_unshift($final_array[$key], "URL");
-				 //  print_r($header_2);exit;
-		      }else{
-		      	  $data = columns_included_for_docx($arr,3,$titles,$lang);
-				  $data[1]=$voyages->nextArticleId();
-				  $final_array[$key][0]=$data[1];
-				  //echo "<pre>";print_r($data);exit;
-				  $docxfile = create_docx_file ($header,$header_2,$data,$srcPath,$fill_colors,$key);  // create docx file using create_docx_file function
-				 // $final_array[$key][0] = "http://clients.edit-place.com/excel-devs/voyages/refdocs.php?client=VOYAGES&folder=".$rand."&file=".$docxfile;
-				  array_unshift($final_array[$key], "http://clients.edit-place.com/excel-devs/voyages/refdocs.php?client=VOYAGES&folder=".$rand."&file=".$docxfile);
-				  $voyages->createArticle($data,$arr,$docxfile);
-			  }*/
-			  $l++;
+				  
+				}
+				/*else if($key == 2){
+				   $header_2 = $toyr->docxColumns($arr,2,$titles,$lang);
+				   array_unshift($final_array[$key], "URL");
+				   //print_r($header_2);exit;
+				}*/
+				else {
+					$data = $toyr->docxColumns($arr,3,$titles,$lang);
+				  	$data[1]=$toyr->nextArticleId();
+				  	//echo "<pre>";print_r($data);exit;
+				  	$final_array[$key][0]=$data[1];
+				  	//echo "<pre>";print_r($data);exit;
+				  	$docxfile = create_docx_file ($header,$header_2,$data,$srcPath,$fill_colors,$key);  //create docx file using create_docx_file function
+				  	array_unshift($final_array[$key], "http://clients.edit-place.com/excel-devs/toyr/refdocs.php?client=toyr&folder=".$rand."&file=".$docxfile);
+				  	$toyr->createArticle($data,$arr,$docxfile);
+				}
+				$l++;
 		   }
-		   exit;
-		 //echo "<pre>";
+		   
+		//echo "<pre>";
 		// print_r($titles);
-			//print_r ($final_array); echo "</pre>"; exit;
-		    
+		//print_r ($fill_colors); echo "</pre>"; exit;
+
 		  writeXlsxVenereNewDev1($final_array,$srcFile,$fill_colors); // call writer function here
 		  // writeMultiSheets(array($final_array), $srcFile,array('sheet1') ,$sheetnames,$colors); 
             if(file_exists($srcFile)) {
@@ -186,39 +168,6 @@ else
 	   
 	 
 	   
-	   $array_data1=array();
-	   $array_data1[1]= '';
-	   $array_data1[2]= $array_data[1];
-	   $array_data1[3]= $array_data[2];
-	   $array_data1[4]= $array_data[3];
-	   $array_data1[5]= $array_data[4];
-	   $array_data1[6]= $array_data[5];
-	   $array_data1[7]= $array_data[7];
-	   $array_data1[8]= '';
-	   $array_data1[9]= '';
-	   $array_data1[10]= '';
-	   $array_data1[11]= '';
-	   $array_data1[12]= '';
-	   $array_data1[13]= '';
-
-	  
-	   if($hd == 1) { $array_data1[1]=1; } else if($hd == 2) { $array_data1[1]="Article ID"; } else { $array_data1[1]=""; }   
-	   
-	   if($hd == 1) { $array_data1[8]=8; } else if($hd == 2) { $array_data1[8]="Titre 1"; } else { $array_data1[8]=''; }
-	   
-	   if($hd == 1) { $array_data1[10]=10; } else if($hd == 2) { $array_data1[10]="Titre 2"; } else { $array_data1[10]=''; }
-	    
-	   if($hd == 1) { $array_data1[12]=12; } else if($hd == 2) { $array_data1[12]="Titre 3"; } else { $array_data1[11]=''; }
-	   
-	   
-	   if($hd == 1) { $array_data1[9]=9; } else if($hd == 2) { $array_data1[9]="Paragraphe 1 \n 200 mots (+/- 20 mots)"; } else { $array_data1[9]=''; }
-	   
-	   if($hd == 1) { $array_data1[11]=11; } else if($hd == 2) { $array_data1[11]="Paragraphe 2 \n 200 mots (+/- 20 mots)"; } else { $array_data1[11]=''; }
-	    
-	   if($hd == 1) { $array_data1[13]=13; } else if($hd == 2) { $array_data1[13]="Paragraphe 3 \n 100 mots (+/- 20 mots)"; } else { $array_data1[12]=''; }
-	   
-	   
-	   return $array_data1;
    }
    
    /* columns_color_included_for_docx function
@@ -232,21 +181,22 @@ else
    function columns_color_included_for_docx($array_data){
 	   
 	   $array_data1=array();
-	   $array_data1[1]= $array_data[0];
+	   $array_data1[1]= $array_data[1];
 	   $array_data1[2]= $array_data[1];
 	   $array_data1[3]= $array_data[2];
-	   $array_data1[4]= $array_data[3];
-	   $array_data1[5]= $array_data[4];
+	   $array_data1[4]= $array_data[8];
+	   $array_data1[5]= $array_data[7];
 	   $array_data1[6]= $array_data[5];
 	   $array_data1[7]= $array_data[6];
-	   $array_data1[8]= $array_data[8];
+	   $array_data1[8]= $array_data[9];
 	   $array_data1[9]= $array_data[10];
-	   $array_data1[10]= $array_data[8];
-	   $array_data1[11]= $array_data[10];
-	   $array_data1[12]= $array_data[8];
-	   $array_data1[13]= $array_data[10];
+	   $array_data1[10]= $array_data[4];
+	   $array_data1[11]= $array_data[4];
+	   $array_data1[12]= $array_data[4];
+	   $array_data1[13]= $array_data[4];
+	   $array_data1[14]= $array_data[4];
 	   
-	   
+	   //echo "<pre>"; print_r($array_data1);exit;
 	   
 	   return $array_data1;
    } 
@@ -264,13 +214,15 @@ else
    */
 	
 	 function create_docx_file($header,$header_2,$data,$path,$fill_colors,$key){
-	
-	   $header_color= array();
+	 	$header_color= array();
 	   $header_2_color= array();
 	   $data_color= array();
 	   
 	   $header_color = columns_color_included_for_docx($fill_colors[1]);
+	   //array_unshift($header_color,'FFFFFFFF');
+	   //echo "<pre>"; print_r($header_color);exit;
 	   $header_2_color = columns_color_included_for_docx($fill_colors[2]);
+	  // array_unshift($header_color,'FFFFFFFF');
 	   $data_color = columns_color_included_for_docx($fill_colors[1]);
 	   
 	  //echo sizeof($header)."/".sizeof($path);
@@ -282,7 +234,7 @@ else
 	  
 	
 	    $PHPWord = new PHPWord();
-        // document style orientation and margin 
+	    // document style orientation and margin 
         $sectionStyle = array('orientation' => 'landscape', 'marginLeft'=>600, 'marginRight'=>600, 'marginTop'=>600, 'marginBottom'=>600, 'colsNum' => 2);
         $section = $PHPWord->createSection($sectionStyle);
 
@@ -314,13 +266,19 @@ else
 				if($c == 1){
 					$col_bg_1 = array('bgColor'=>substr($header_color[$i], 2));
 					$table->addCell(500,$col_bg_1)->addText(write_to_docx($header[$i]), $fontStyle); 				    
-				}else if($c == 2){
+				}
+				/*else if($c == 2){
 					
 					$col_bg_2 = array('bgColor'=>substr($header_2_color[$i], 2));
 					$table->addCell(2000,$col_bg_2)->addText(write_to_docx($header_2[$i]), $fontStyle); 				    
-			    }else{
-					 $col_bg_3 = array('bgColor'=>substr($data_color[$i], 2));
-				     $table->addCell(13300,$data_color)->addText(write_to_docx($data[$i]));    		
+			    }*/
+			    else if($c != 2){
+					$col_bg_3 = array('bgColor'=>substr($data_color[$i], 2));
+					if($i<=3){
+						$table->addCell(13300,'FFFFFFFF')->addText(write_to_docx($data[$i]));   
+					}else{
+				    	$table->addCell(13300,$col_bg_3)->addText(write_to_docx($data[$i]));    		
+				 	}
 				}
 			 
 			}  $i++; //echo "<br />";	
@@ -328,14 +286,15 @@ else
       //exit;
       $symbols = array("(", ")", " : ", "&", ".", ",", "«", ";", "»", ".", "!", "/","‘", "\\"); // array of special chracter to remove
       
-      $file_name_docx = $data[1]." ".$data[2]." ".$data[5];
-      $file_name_docx = str_replace($symbols, "", $file_name_docx);
+      $file_name_docx = $data[1]." ".$data[2];
+     $file_name_docx = str_replace($symbols, "", $file_name_docx);
       $file_name_docx = str_replace(" ", "-", $file_name_docx);
       $file_name_docx = str_replace("--", "-", $file_name_docx);
       
       $bl = new Basiclib();
       $file_name_docx = $bl->normaliseUrlString($file_name_docx); // remove french character from filename
-      //echo "$file_name_docx"; 
+
+      //echo "$file_name_docx"; exit;
 
 		// Save File
 		$objWriter = PHPWord_IOFactory::createWriter($PHPWord, 'Word2007');
@@ -356,7 +315,6 @@ else
 	 
 	  function writeXlsxVenereNewDev1($data,$file_path,$colors)
     {
-		
 		//echo "Debug 3<pre>"; print_r ($colors); echo "</pre>";	
 		
 		$anchorCols = array_filter(explode(",", $anchor_cols)) ;
@@ -375,63 +333,69 @@ else
         /* Add some data */
         $objPHPExcel->setActiveSheetIndex(0);
 
-
+       // echo "<pre>"; print_r($data);exit;
         $rowCount=0;
         foreach ($data as $k=>$row)
-        {
-            $col = 'A';
-            $header_colors=array();
-            
+        {	
+        	if($k>0){
+	            $col = 'A';
+	            $header_colors=array();
+	            
 
-		   //echo "Debug 4 $k<pre>"; print_r ($colors[$k]); echo "</pre>";	exit;
-	       $header_colors = $colors[$k];
-            
-            
-            foreach ($row as $key => $value)
-            {	/* Based on OS Apply Encoding */
-				if (getOS($_SERVER['HTTP_USER_AGENT']) != 'Windows')
-                {      
-					$value = iconv("ISO-8859-1", "UTF-8", $value) ;
-					$value = str_replace("", htmlentities("œ"), $value) ;
-					$value = str_replace("", "'", $value) ;
-					$value = str_replace("", "'", $value) ;
-					$value = html_entity_decode(htmlentities($value,  ENT_QUOTES, 'UTF-8'), ENT_QUOTES ,mb_detect_encoding($value));
-					$value=html_entity_decode($value);
-					//$value = isset($value) ? ((mb_detect_encoding($value) == "ISO-8859-1") ? iconv("ISO-8859-1", "UTF-8", $value) : $value) : '';
-					//$value = isset($value) ? html_entity_decode(htmlentities($value,ENT_QUOTES,"UTF-8")) : '';
-                        
-				}
-				//$value=str_replace("_x0019_","'",$value);
-								
-				//echo $value."-".$col."-".$rowCount;
-				
-				//$value =str_replace("=","",$value);
-			    if(substr($header_colors[$key+1],2) == "000000")
-			       $cell_color = "FFFFFF";
-			    elseif(empty($header_colors[$key+1]))
-			       $cell_color = "FFFFFF";
-			    else
-			       $cell_color = substr($header_colors[$key+1],2);    
-			      
-				$stylArr1 = array('fill' =>array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'startcolor' => array('rgb' => $cell_color)));
-				
-				$objPHPExcel->getActiveSheet()->getStyle($col.($rowCount + 1)) -> applyFromArray($stylArr1);
-				
-				$objPHPExcel->getActiveSheet()->setCellValue($col.($rowCount+1), $value);
-                   
-                if((strstr($value, "http://clients.edit-place.com/excel-devs/") && ($col=='A')) || (in_array($col, $anchorCols)))
-                {
-                    $objPHPExcel->getActiveSheet()->getCell($col.($rowCount+1))->getHyperlink()->setUrl($value);
-                    $objPHPExcel->getActiveSheet()->getCell($col.($rowCount+1))->getHyperlink()->setTooltip($value);
-                }
-                $col++;
-                
-                /* if($col == "A" || $col == "B") // Show only A B columns hide other columns
-                   $objPHPExcel->getActiveSheet()->getColumnDimension($col)->setVisible(true); 
-                else
-                   $objPHPExcel->getActiveSheet()->getColumnDimension($col)->setVisible(false); */   
-            }
-            $rowCount++;
+			   //echo "Debug 4 $k<pre>"; print_r ($colors[$k]); echo "</pre>";	exit;
+		       $header_colors = $colors[$k];
+		       array_unshift($header_colors,'FFFFFFFF');
+		       //echo "<pre>"; print_r($header_colors);
+		      // exit;
+	            
+	            
+	            foreach ($row as $key => $value)
+	            {	/* Based on OS Apply Encoding */
+					if (getOS($_SERVER['HTTP_USER_AGENT']) != 'Windows')
+	                {      
+						$value = iconv("ISO-8859-1", "UTF-8", $value) ;
+						$value = str_replace("", htmlentities("œ"), $value) ;
+						$value = str_replace("", "'", $value) ;
+						$value = str_replace("", "'", $value) ;
+						$value = html_entity_decode(htmlentities($value,  ENT_QUOTES, 'UTF-8'), ENT_QUOTES ,mb_detect_encoding($value));
+						$value=html_entity_decode($value);
+						//$value = isset($value) ? ((mb_detect_encoding($value) == "ISO-8859-1") ? iconv("ISO-8859-1", "UTF-8", $value) : $value) : '';
+						//$value = isset($value) ? html_entity_decode(htmlentities($value,ENT_QUOTES,"UTF-8")) : '';
+	                        
+					}
+					//$value=str_replace("_x0019_","'",$value);
+									
+					//echo $value."-".$col."-".$rowCount;
+					
+					//$value =str_replace("=","",$value);
+				    if(substr($header_colors[$key],2) == "000000")
+				       $cell_color = "FFFFFF";
+				    elseif(empty($header_colors[$key]))
+				       $cell_color = "FFFFFF";
+				    else
+				       $cell_color = substr($header_colors[$key],2);    
+				      
+					$stylArr1 = array('fill' =>array('type' => PHPExcel_Style_Fill::FILL_SOLID, 'startcolor' => array('rgb' => $cell_color)));
+					
+					$objPHPExcel->getActiveSheet()->getStyle($col.($rowCount + 1)) -> applyFromArray($stylArr1);
+					
+					$objPHPExcel->getActiveSheet()->setCellValue($col.($rowCount+1), $value);
+	                   
+	                if((strstr($value, "http://clients.edit-place.com/excel-devs/") && ($col=='A')) || (in_array($col, $anchorCols)))
+	                {
+	                    $objPHPExcel->getActiveSheet()->getCell($col.($rowCount+1))->getHyperlink()->setUrl($value);
+	                    $objPHPExcel->getActiveSheet()->getCell($col.($rowCount+1))->getHyperlink()->setTooltip($value);
+	                }
+	                $col++;
+	                
+	                /* if($col == "A" || $col == "B") // Show only A B columns hide other columns
+	                   $objPHPExcel->getActiveSheet()->getColumnDimension($col)->setVisible(true); 
+	                else
+	                   $objPHPExcel->getActiveSheet()->getColumnDimension($col)->setVisible(false); */   
+	            }
+           		$rowCount++;
+        	}
+
         }
         //exit;
 
