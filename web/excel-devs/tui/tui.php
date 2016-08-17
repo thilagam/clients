@@ -457,7 +457,7 @@ class Tui
 	 				$clearString14[2],
 	 				$clearString15[0],
 	 				$clearString15[2],
-	 				"<h3>".$clearString13[1]."</h3>".$clearString14[1]." ".$cleanString15[1],
+	 				"<h3>".$clearString13[1]."</h3>".$clearString14[1]." ".$clearString15[1],
 	 				"text"
 				);
 				$row_3 = array(
