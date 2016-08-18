@@ -237,11 +237,26 @@ class Tui
 	 			break;
 	 		
 	 		case 2:
-	 					
 	 			/* Create Rows manually from inconsistant pattern  */		
 	 			/* ROW1 */
-	 			$cleanString1=$this->validateAndCleanHtml($rowData[9][2],$validations[8]);
-	 			$cleanString2=$this->validateAndCleanHtml($rowData[10][2],$validations[9]);
+	 			$cleansous1=$this->validateAndCleanHtml($rowData[9][2],$validations[8]);
+	 			$cleansous2=$this->validateAndCleanHtml($rowData[10][2],$validations[9]);
+
+	 			$cleansous3=$this->validateAndCleanHtml($rowData[12][2],$validations[11]);
+	 			$cleansous4=$this->validateAndCleanHtml($rowData[13][2],$validations[12]);
+	 			$cleansous5=$this->validateAndCleanHtml($rowData[14][2],$validations[13]);
+
+	 			$cleansous6=$this->validateAndCleanHtml($rowData[16][2],$validations[15]);
+	 			$cleansous7=$this->validateAndCleanHtml($rowData[17][2],$validations[16]);
+	 			$cleansous8=$this->validateAndCleanHtml($rowData[18][2],$validations[17]);
+
+	 			$cleansous9=$this->validateAndCleanHtml($rowData[20][2],$validations[19]);
+	 			$cleansous10=$this->validateAndCleanHtml($rowData[21][2],$validations[20]);
+	 			$cleansous11=$this->validateAndCleanHtml($rowData[22][2],$validations[21]);
+
+	 			$cleansous12=$this->validateAndCleanHtml($rowData[24][2],$validations[23]);
+	 			$cleansous13=$this->validateAndCleanHtml($rowData[25][2],$validations[24]);
+
 			 	$row_1=array(
 			 				strip_tags($rowData[1][2]),
 			 				//strip_tags($rowData[3][2]),
@@ -260,17 +275,18 @@ class Tui
 			 				strip_tags($rowData[8][2]),
 			 				'', //empty
 			 				'', //empty
-			 				$cleanString1[0],
-			 				$cleanString1[2],
-			 				$cleanString2[0],
-			 				$cleanString2[2],
-			 				$cleanString1[1]." ".$cleanString2[1],
+			 				$cleansous1[0],
+			 				$cleansous1[2],
+			 				$cleansous2[0],
+			 				$cleansous2[2],
+			 				$cleansous1[1]." ".$cleansous2[1],
 			 				"text"
 			 			);
+			 	
 	 			/* ROW2 */		
-	 			$cleanString3=$this->validateAndCleanHtml($rowData[13][2],$validations[12]);
-	 			$cleanString4=$this->validateAndCleanHtml($rowData[14][2],$validations[13]);
-	 			$cleansous=$this->validateAndCleanHtml($rowData[12][2],$validations[11]);
+	 			//$cleanString3=$this->validateAndCleanHtml($rowData[13][2],$validations[12]);
+	 			//$cleanString4=$this->validateAndCleanHtml($rowData[14][2],$validations[13]);
+	 			//$cleansous=$this->validateAndCleanHtml($rowData[12][2],$validations[11]);
 	 			//echo "<pre>"; print_r($cleansous);exit;
 			 	$row_2=array(
 			 				strip_tags($rowData[1][2]),
@@ -288,18 +304,19 @@ class Tui
 			 				1,
 			 				1,
 			 				strip_tags($rowData[11][2]),
-			 				$cleansous[0],
-			 				$cleansous[2], 
-			 				$cleanString3[0],
-			 				$cleanString3[2],
-			 				$cleanString4[0],
-			 				$cleanString4[2],
-			 				"<h3>".ltrim($cleansous[0],'ERR-')."</h3>".$cleanString3[1]." ".$cleanString4[1],
+			 				$cleansous3[0],
+			 				$cleansous3[2], 
+			 				$cleansous4[0],
+			 				$cleansous4[2],
+			 				$cleansous5[0],
+			 				$cleansous5[2],
+			 				"<h3>".ltrim($cleansous3[0],'ERR-')."</h3>".$cleansous4[1]." ".$cleansous5[1],
 			 				"text"
 			 			);
+			 	
 			 	/* ROW3 */		
-			 	$cleanString5=$this->validateAndCleanHtml($rowData[17][2],$validations[16]);
-			 	$cleansous2=$this->validateAndCleanHtml($rowData[16][2],$validations[15]);
+			 	//$cleanString5=$this->validateAndCleanHtml($rowData[17][2],$validations[16]);
+			 	//$cleansous2=$this->validateAndCleanHtml($rowData[16][2],$validations[15]);
 			 	
 	 			$row_3=array(
 			 				strip_tags($rowData[1][2]),
@@ -317,18 +334,19 @@ class Tui
 			 				2,
 			 				2,
 			 				strip_tags($rowData[15][2]),
-			 				$cleansous2[0],
-			 				$cleansous2[2], 
-			 				'',
-			 				'',
-			 				$cleanString5[0],
-			 				$cleanString5[2],
-			 				"<h3>".ltrim($cleansous2[0],'ERR-')."</h3>".$cleanString5[1],
+			 				$cleansous6[0],
+			 				$cleansous6[2], 
+			 				$cleansous7[0],
+			 				$cleansous7[2],
+			 				$cleansous8[0],
+			 				$cleansous8[2],
+			 				"<h3>".ltrim($cleansous6[0],'ERR-')."</h3>".$cleansous7[1]." ".$cleansous8[1],
 			 				"text"
 			 			);
+	 			
 				/* ROW 4 */		
-			 	$cleanString6=$this->validateAndCleanHtml($rowData[20][2],$validations[19]);
-			 	$cleansous3=$this->validateAndCleanHtml($rowData[19][2],$validations[18]);
+			 	//$cleanString6=$this->validateAndCleanHtml($rowData[20][2],$validations[19]);
+			 	//$cleansous3=$this->validateAndCleanHtml($rowData[19][2],$validations[18]);
 			 	
 	 			$row_4=array(
 			 				strip_tags($rowData[1][2]),
@@ -339,25 +357,26 @@ class Tui
 			 				$basiclib->normaliseUrlString(strip_tags(strtolower($rowData[6][2]))),
 			 				//strip_tags($rowData[7][2]),
 			 				//strip_tags($rowData[18][2])." ( ".$validations[18]." + ".$validations[19]." ) ",
-			 				strip_tags($rowData[18][2]),
+			 				strip_tags($rowData[19][2]),
 			 				2,
 			 				2,
 			 				3,
 			 				1,
 			 				3,
-			 				strip_tags($rowData[18][2]),
-			 				$cleansous3[0],
-			 				$cleansous3[2], 
-			 				'',
-			 				'',
-			 				$cleanString6[0],
-			 				$cleanString6[2],
-			 				"<h3>".ltrim($cleansous3[0],'ERR-')."</h3>".$cleanString6[1],
+			 				strip_tags($rowData[19][2]),
+			 				$cleansous9[0],
+			 				$cleansous9[2], 
+			 				$cleansous10[0],
+			 				$cleansous10[2], 
+			 				$cleansous11[0],
+			 				$cleansous11[2], 
+			 				"<h3>".ltrim($cleansous9[0],'ERR-')."</h3>".$cleansous10." ".$cleansous11[1],
 			 				"text"
 			 			);
+	 			
 	 			/* ROW 5 */		
-	 			$cleanString7=$this->validateAndCleanHtml($rowData[22][2],$validations[21]);
-	 			$cleanString8=$this->validateAndCleanHtml($rowData[23][2],$validations[22]);
+	 			//$cleanString7=$this->validateAndCleanHtml($rowData[22][2],$validations[21]);
+	 			//$cleanString8=$this->validateAndCleanHtml($rowData[23][2],$validations[22]);
 			 	$row_5=array(
 			 				strip_tags($rowData[1][2]),
 			 				//strip_tags($rowData[3][2]),
@@ -367,24 +386,24 @@ class Tui
 			 				$basiclib->normaliseUrlString(strip_tags(strtolower($rowData[6][2]))),
 			 				//strip_tags($rowData[7][2]),
 			 				//strip_tags($rowData[21][2])." ( ".$validations[21]." + ".$validations[22]." ) ",
-			 				strip_tags($rowData[21][2]),
+			 				strip_tags($rowData[23][2]),
 			 				3,
 			 				1,
 			 				1,
 			 				1,
 			 				1,
-			 				strip_tags($rowData[21][2]),
+			 				strip_tags($rowData[23][2]),
 			 				'', //empty
 			 				'', //empty
-			 				$cleanString7[0],
-			 				$cleanString7[2],
-			 				$cleanString8[0],
-			 				$cleanString8[2],
-			 				$cleanString7[1]." ".$cleanString8[1],
+			 				$cleansous12[0],
+			 				$cleansous12[2],
+			 				$cleansous13[0],
+			 				$cleansous13[2],
+			 				$cleansous12[1]." ".$cleansous13[1],
 			 				"text"
 			 			);
 			 	$sheetRows=array($row_1,$row_2,$row_3,$row_4,$row_5);	
-
+			 	
 	 			break;
 	 			 /*
 					* Author: Thilagam
