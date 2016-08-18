@@ -183,18 +183,14 @@ else
 	   $array_data1=array();
 	   $array_data1[1]= $array_data[1];
 	   $array_data1[2]= $array_data[1];
-	   $array_data1[3]= $array_data[2];
-	   $array_data1[4]= $array_data[8];
-	   $array_data1[5]= $array_data[7];
-	   $array_data1[6]= $array_data[5];
-	   $array_data1[7]= $array_data[6];
-	   $array_data1[8]= $array_data[9];
-	   $array_data1[9]= $array_data[10];
-	   $array_data1[10]= $array_data[4];
-	   $array_data1[11]= $array_data[4];
-	   $array_data1[12]= $array_data[4];
-	   $array_data1[13]= $array_data[4];
-	   $array_data1[14]= $array_data[4];
+	   $array_data1[3]= $array_data[1];
+	   $array_data1[4]= $array_data[1];
+	   $array_data1[5]= $array_data[1];
+	   $array_data1[6]= $array_data[1];
+	   $array_data1[7]= $array_data[7];
+	   $array_data1[8]= $array_data[7];
+	   $array_data1[9]= $array_data[7];
+	   
 	   
 	   //echo "<pre>"; print_r($array_data1);exit;
 	   
@@ -224,7 +220,6 @@ else
 	   $header_2_color = columns_color_included_for_docx($fill_colors[2]);
 	  // array_unshift($header_color,'FFFFFFFF');
 	   $data_color = columns_color_included_for_docx($fill_colors[1]);
-	   
 	  //echo sizeof($header)."/".sizeof($path);
 	  //echo $key;
 	  //echo "Debug 3<pre>"; print_r ($header_color); echo "</pre>";
@@ -272,15 +267,14 @@ else
 					$col_bg_2 = array('bgColor'=>substr($header_2_color[$i], 2));
 					$table->addCell(2000,$col_bg_2)->addText(write_to_docx($header_2[$i]), $fontStyle); 				    
 			    }*/
-			    else if($c != 2){
-					$col_bg_3 = array('bgColor'=>substr($data_color[$i], 2));
-					if($i<=3){
-						$table->addCell(13300,'FFFFFFFF')->addText(write_to_docx($data[$i]));   
+			    else{
+					if($i<=6){
+						$col_bg_3 = array('bgColor'=>substr($data_color[$i], 2));
+						$table->addCell(2000,$col_bg_3)->addText(write_to_docx($data[$i]));  
 					}else{
-				    	$table->addCell(13300,$col_bg_3)->addText(write_to_docx($data[$i]));    		
+				    	$table->addCell(2000,'FFFFFFFF')->addText(write_to_docx($data[$i]));    		
 				 	}
 				}
-			 
 			}  $i++; //echo "<br />";	
 		}
       //exit;
