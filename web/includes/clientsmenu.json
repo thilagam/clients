@@ -1306,6 +1306,22 @@
 			]
         },
         {
+            "h3": "BNP",
+            "menus": "BNP",
+            "client": "BNP",
+            "base": "bnp",
+            "li": [
+                {
+                    "href": "templates",
+                    "label": "Generate writers file .xlsx > . docx (URL)"
+                },
+                {
+                    "href": "delivery",
+                    "label": "Delivery file .zip (.docx)  > .xlsx"
+                }
+            ]
+        },
+        {
             "h3": "SEM",
             "menus": "SEM_MENU",
             "client": "SEM",
