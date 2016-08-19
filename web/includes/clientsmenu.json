@@ -23,6 +23,10 @@
                     "label": "Generate writer file .docx > .xlsx (URL)"
                 },
                 {
+                    "href": "dev2",
+                    "label": "Delivery file .zip (.docx)  > .xlsx"
+                },
+                {
                     "href":"template",
                     "label":"Template Creation"
                 }
