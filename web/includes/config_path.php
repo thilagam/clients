@@ -717,6 +717,10 @@ define("VOYAGES_WRITER_FILE_PATH",VOYAGES_PATH."/writer-files");
 define("TOYR_PATH",ROOT_PATH."/excel-devs/toyr");
 define("TOYR_WRITER_FILE_PATH",TOYR_PATH."/writer-files");
 
+//BNP
+define("BNP_PATH",ROOT_PATH."/excel-devs/bnp");
+define("BNP_WRITER_FILE_PATH",BNP_PATH."/writer-files");
+
 //InterRent
 define("INTERRENT_PATH", ROOT_PATH."/excel-devs/interrent");
 define("INTERRENT_WRITER_FILE_PATH", INTERRENT_PATH."/writer-files");
