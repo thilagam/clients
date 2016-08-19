@@ -121,9 +121,9 @@ if(isset($_POST['submit']))
 				}*/
 				else {
 					$data = $toyr->docxColumns($arr,3,$titles,$lang);
-				  	//$data[1]=$toyr->nextArticleId();
+				  	$data[1]=$toyr->nextArticleId();
 				  	//echo "<pre>";print_r($data);exit;
-				  	//$final_array[$key][0]=$data[1];
+				  	$final_array[$key][0]=$data[1];
 				  	//echo "<pre>";print_r($data);exit;
 				  	$docxfile = create_docx_file ($header,$header_2,$data,$srcPath,$fill_colors,$key);  //create docx file using create_docx_file function
 				  	array_unshift($final_array[$key], "http://clients.edit-place.com/excel-devs/toyr/refdocs.php?client=toyr&folder=".$rand."&file=".$docxfile);
@@ -256,7 +256,7 @@ else
 			// Add row
 			$table->addRow();
             $data[$i] = str_replace("’","'", $data[$i]); // replace ’ woth '
-			for($c = 1; $c <= 3; $c++) { // Loop through cells
+			for($c = 1; $c <= 2; $c++) { // Loop through cells
 				// Add Cell  
 				if($c == 1){
 					$col_bg_1 = array('bgColor'=>substr($header_color[$i], 2));
@@ -270,9 +270,9 @@ else
 			    else{
 					if($i<=6){
 						$col_bg_3 = array('bgColor'=>substr($data_color[$i], 2));
-						$table->addCell(2000,$col_bg_3)->addText(write_to_docx($data[$i]));  
+						$table->addCell(5000,$col_bg_3)->addText(write_to_docx($data[$i]));  
 					}else{
-				    	$table->addCell(2000,'FFFFFFFF')->addText(write_to_docx($data[$i]));    		
+				    	$table->addCell(5000,'FFFFFFFF')->addText(write_to_docx($data[$i]));    		
 				 	}
 				}
 			}  $i++; //echo "<br />";	

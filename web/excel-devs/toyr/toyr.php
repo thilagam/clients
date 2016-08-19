@@ -44,7 +44,7 @@ class Toyr
 		//echo $this->escape_quote(utf8_encode($allData[10]));
 		//echo "<pre>"; print_r($allData); exit;
 		$insertData=array(
-							'toyr_article_id'=>$this->escape_quote($data[1]),
+							//'toyr_article_id'=>$this->escape_quote($data[1]),
 							'toyr_skn'=>$this->escape_quote($data[2]),
 							'toyr_uid'=>$this->escape_quote($data[3]),
 							'toyr_pid'=>$this->escape_quote($data[4]),
@@ -57,7 +57,6 @@ class Toyr
 		
 		$fields=implode(',', array_keys($insertData));
 		$values="	
-					'".$this->escape_quote($allData[0])."',
 					'".$this->escape_quote($allData[1])."',
 					'".$this->escape_quote($allData[2])."',
 					'".$this->escape_quote($allData[3])."',
