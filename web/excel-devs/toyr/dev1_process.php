@@ -111,7 +111,7 @@ if(isset($_POST['submit']))
 				if($key == 1){
 				   $header = $toyr->docxColumns($arr,1,$titles,$lang);
 				  //print_r($header);exit;
-				   array_unshift($final_array[$key], "URL");
+				   array_unshift($final_array[$key], "Writer File URL");
 				  
 				}
 				/*else if($key == 2){
@@ -121,9 +121,9 @@ if(isset($_POST['submit']))
 				}*/
 				else {
 					$data = $toyr->docxColumns($arr,3,$titles,$lang);
-				  	$data[1]=$toyr->nextArticleId();
+				  	//$data[1]=$toyr->nextArticleId();
 				  	//echo "<pre>";print_r($data);exit;
-				  	$final_array[$key][0]=$data[1];
+				  	//$final_array[$key][0]=$data[1];
 				  	//echo "<pre>";print_r($data);exit;
 				  	$docxfile = create_docx_file ($header,$header_2,$data,$srcPath,$fill_colors,$key);  //create docx file using create_docx_file function
 				  	array_unshift($final_array[$key], "http://clients.edit-place.com/excel-devs/toyr/refdocs.php?client=toyr&folder=".$rand."&file=".$docxfile);
