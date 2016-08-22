@@ -763,6 +763,22 @@
 			]
         },
         {
+            "h3": "MINELLI",
+            "menus": "MINELLI_MENU",
+            "client": "MINELLI",
+            "base": "minelli",
+            "li": [
+                {
+                    "href": "index",
+                    "label": "Minelli Writers"
+                },
+                 {
+                    "href": "dev2",
+                    "label": "Minelli Delivery"
+                }
+            ]
+        },
+        {
             "h3": "CHEVIGNON",
             "menus": "CHEVIGNON_MENU",
             "client": "CHEVIGNON",
