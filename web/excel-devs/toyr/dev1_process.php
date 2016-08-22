@@ -104,21 +104,20 @@ if(isset($_POST['submit']))
 			$header = array();
 			$header_2 = array();
 			$data = array(); 
-
+			//echo "<pre>";print_r($final_array);exit;
 			$l=0;
 			foreach($final_array as $key=>$arr){
-				//echo "<pre>";  
 				if($key == 1){
 				   $header = $toyr->docxColumns($arr,1,$titles,$lang);
 				  //print_r($header);exit;
-				   array_unshift($final_array[$key], "Writer File URL");
+				   array_unshift($final_array[$key], " ");
 				  
 				}
-				/*else if($key == 2){
+				else if($key == 2){
 				   $header_2 = $toyr->docxColumns($arr,2,$titles,$lang);
 				   array_unshift($final_array[$key], "URL");
 				   //print_r($header_2);exit;
-				}*/
+				}
 				else {
 					$data = $toyr->docxColumns($arr,3,$titles,$lang);
 				  	$data[1]=$toyr->nextArticleId();
@@ -190,6 +189,23 @@ else
 	   $array_data1[7]= $array_data[7];
 	   $array_data1[8]= $array_data[7];
 	   $array_data1[9]= $array_data[7];
+
+	   $array_data1[10]= $array_data[1];
+	   $array_data1[11]= $array_data[1];
+	   $array_data1[12]= $array_data[1];
+	   $array_data1[13]= $array_data[1];
+	   $array_data1[14]= $array_data[1];
+	   $array_data1[15]= $array_data[1];
+	   $array_data1[16]= $array_data[7];
+	   $array_data1[17]= $array_data[7];
+	   $array_data1[18]= $array_data[7];
+
+	   $array_data1[19]= $array_data[1];
+	   $array_data1[20]= $array_data[1];
+	   $array_data1[21]= $array_data[1];
+	   $array_data1[22]= $array_data[1];
+	   $array_data1[23]= $array_data[1];
+	   $array_data1[24]= $array_data[1];
 	   
 	   
 	   //echo "<pre>"; print_r($array_data1);exit;
@@ -256,19 +272,19 @@ else
 			// Add row
 			$table->addRow();
             $data[$i] = str_replace("’","'", $data[$i]); // replace ’ woth '
-			for($c = 1; $c <= 2; $c++) { // Loop through cells
+			for($c = 1; $c <= 3; $c++) { // Loop through cells
 				// Add Cell  
 				if($c == 1){
 					$col_bg_1 = array('bgColor'=>substr($header_color[$i], 2));
 					$table->addCell(500,$col_bg_1)->addText(write_to_docx($header[$i]), $fontStyle); 				    
 				}
-				/*else if($c == 2){
+				else if($c == 2){
 					
 					$col_bg_2 = array('bgColor'=>substr($header_2_color[$i], 2));
 					$table->addCell(2000,$col_bg_2)->addText(write_to_docx($header_2[$i]), $fontStyle); 				    
-			    }*/
+			    }
 			    else{
-					if($i<=6){
+					if($i>18){
 						$col_bg_3 = array('bgColor'=>substr($data_color[$i], 2));
 						$table->addCell(5000,$col_bg_3)->addText(write_to_docx($data[$i]));  
 					}else{
@@ -278,6 +294,7 @@ else
 			}  $i++; //echo "<br />";	
 		}
       //exit;
+		//echo"<pre>";print_r($table);exit;
       $symbols = array("(", ")", " : ", "&", ".", ",", "«", ";", "»", ".", "!", "/","‘", "\\"); // array of special chracter to remove
       
       $file_name_docx = $data[1]." ".$data[2];
