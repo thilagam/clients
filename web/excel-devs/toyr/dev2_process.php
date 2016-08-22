@@ -103,12 +103,12 @@ if(isset($_POST['submit']))
 				$dummy_array = process_xmlData(readDocx($docx));
         $sheet_3_array = array();
         $other_data = array();
-        echo "<pre>"; print_r($dummy_array); exit;
+        
 				for($i=1;$i<=sizeof($dummy_array);$i++)
         {
         	if($i==1)
           {
-            $sql = "Select * from cl_bnp_articles where bnp_article_id=".strip_tags($dummy_array[$i][2]);
+            $sql = "Select * from cl_toyr_articles where toyr_skn=".strip_tags($dummy_array[$i][2]);
             //echo $sql;exit;
             $result = $dbfunctions->mysql_qry($sql,1);  
             $other_data = mysql_fetch_assoc($result);
@@ -118,26 +118,23 @@ if(isset($_POST['submit']))
           }
         }
         
-        //echo "<pre>"; print_r($final_array[$j]);
-        $edito =  str_replace("'","''",toLink(paragraph($final_array[$j][10])))." "
-                  .str_replace("'","''",toLink(paragraph($final_array[$j][11])))." "
-                  .str_replace("'","''",toLink(paragraph($final_array[$j][12])))." "
-                  .str_replace("'","''",toLink(paragraph($final_array[$j][13])))." "
-                  .str_replace("'","''",toLink(paragraph($final_array[$j][14])));
+        echo "<pre>"; print_r($final_array[$j]);exit;
+       
 		//echo $edito;exit;
         //echo html_entity_decode($edito);exit;
-        $sql1 = "update cl_bnp_articles set bnp_text = '".$edito."'  where bnp_article_id=".strip_tags($final_array[$j][1]);
+        $sql1 = "update cl_toyr_articles set toyr_nom = '".$final_array[$j][7]."' , toyr_longue_description = '".$final_array[$j][8]."', toyr_mots = '".$final_array[$j][8]."' where toyr_skn=".strip_tags($final_array[$j][2]);
         //echo $sql1;exit;
         $dbfunctions->mysql_qry($sql1,1); 
         $finalData = array();
-        $finalData[] = (!empty($other_data))?$other_data['bnp_article_id']:strip_tags($final_array[$j][1]);
-        $finalData[] = (!empty($other_data))?$other_data['bnp_localite']:strip_tags($final_array[$j][6]);
-        $finalData[] = (!empty($other_data))?$other_data['bnp_codes']:strip_tags($final_array[$j][7]);
-        $finalData[] = (!empty($other_data))?$other_data['bnp_type']:strip_tags($final_array[$j][5]);
-       
-        $finalData[] = (!empty($other_data))?$other_data['bnp_transaction']:strip_tags($final_array[$j][4]);
-         
-        $finalData[] = $edito;
+        $finalData[] = (!empty($other_data))?$other_data['toyr_skn']:strip_tags($final_array[$j][2]);
+        $finalData[] = (!empty($other_data))?$other_data['toyr_skn']:strip_tags($final_array[$j][3]);
+        $finalData[] = (!empty($other_data))?$other_data['toyr_skn']:strip_tags($final_array[$j][4]);
+        $finalData[] = (!empty($other_data))?$other_data['toyr_skn']:strip_tags($final_array[$j][5]); 
+        $finalData[] = (!empty($other_data))?$other_data['toyr_skn']:strip_tags($final_array[$j][6]);
+        $finalData[] = (!empty($other_data))?$other_data['toyr_skn']:strip_tags($final_array[$j][7]);
+        $finalData[] = (!empty($other_data))?$other_data['toyr_skn']:strip_tags($final_array[$j][8]);
+        $finalData[] = (!empty($other_data))?$other_data['toyr_skn']:strip_tags($final_array[$j][9]); 
+        
         $newFinalArray[$j]=$finalData;
         $j++;
      	
@@ -145,29 +142,29 @@ if(isset($_POST['submit']))
 			
 		  //echo "<pre>";print_r($newFinalArray); exit;
 
-      $rand="BNP-delivery-".uniqid()."-".date('d-m-y-h-m');
-    	$srcPath=BNP_WRITER_FILE_PATH."/dev2/".$rand."/";
-			$srcFile=BNP_WRITER_FILE_PATH."/dev2/".$rand.".xlsx";
+      $rand="toyr-delivery-".uniqid()."-".date('d-m-y-h-m');
+    	$srcPath=TOYR_WRITER_FILE_PATH."/dev2/".$rand."/";
+			$srcFile=TOYR_WRITER_FILE_PATH."/dev2/".$rand.".xlsx";
 			
 			writeXlsxVenereDev2($newFinalArray,$srcFile);
          
 		    
       if(file_exists($srcFile)) {
-			  header("Location:delivery.php?msg=success&folder=".$rand."&file=".$rand.".xlsx");
+			  header("Location:dev2.php?msg=success&folder=".$rand."&file=".$rand.".xlsx");
 			} else {
-	   	  header("Location:delivery.php?msg=error");
+	   	  header("Location:dev2.php?msg=error");
 			}
 		
             
   }
   else
   {
-      header("Location:delivery.php?msg=file_error");
+      header("Location:dev2.php?msg=file_error");
   }
     	
 }
 else
-    header("Location:delivery.php");
+    header("Location:dev2.php");
 
   /*
     To convert [click here,link] to Actual link
@@ -177,16 +174,16 @@ else
     function toLink($val)
     {
       //$val=preg_replace('/(\*\*)(.[^*]+)(\*\*)/', "<b>$2</b>", $val);
-      $val=preg_replace('/(\*\*)(.[^*]+)(\*\*)/', "<strong>$2</strong>", $val);
-      $val=preg_replace('/(\*)(.[^*]+)(\*)/', "<em>$2</em>", $val);
+      //$val=preg_replace('/(\*\*)(.[^*]+)(\*\*)/', "<strong>$2</strong>", $val);
+      $val=preg_replace('/(\*)(.[^*]+)(\*)/', "<i>$2</i>", $val);
      // preg_match("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/",$val,$match);
 		//echo "<pre>"; print_r($match);
 		//echo "START".trim($match[3])."END<br>";
       //$val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href='$3'>$2</a>" , $val);
       //$val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href=".utf8_decode("«$3»")." >$2</a>" , $val);
-	  $val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href=«##".trim('$3')."##»>$2</a>" , $val);
-	  $val=str_replace("## ","",$val);
-	  $val=str_replace(" ##","",$val);
+	  //$val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href=«##".trim('$3')."##»>$2</a>" , $val);
+	  //$val=str_replace("## ","",$val);
+	  //$val=str_replace(" ##","",$val);
 	//$val=preg_replace("/(||||(.+),(.+)|||||)/", "<a href='$3'>$2 </a>" , $val);
       return $val;
     }
@@ -313,7 +310,8 @@ function paragraph($text)
       { 
         $value=strip_tags($value);
         if($value!=''){
-          $val .= "<p>".$value."</p>";
+          //$val .= "<p>".$value."</p>";
+          $val .= $val."</br>";
         }
       }
     }
@@ -321,7 +319,8 @@ function paragraph($text)
     {
       $val=strip_tags($text);
       $val=rtrim($val,']');
-      $val .= "<p>".$val."</p>";
+      //$val .= "<p>".$val."</p>";
+      $val .= $val."</br>";
     }
     //echo "STR<br>".$val;
     $val = str_replace("|||||","]",$val);
