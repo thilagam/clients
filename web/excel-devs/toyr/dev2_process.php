@@ -118,11 +118,11 @@ if(isset($_POST['submit']))
           }
         }
         
-        echo "<pre>"; print_r($final_array[$j]);exit;
+        //echo "<pre>"; print_r($final_array[$j]);exit;
        
 		//echo $edito;exit;
         //echo html_entity_decode($edito);exit;
-        $sql1 = "update cl_toyr_articles set toyr_nom = '".$final_array[$j][7]."' , toyr_longue_description = '".$final_array[$j][8]."', toyr_mots = '".$final_array[$j][8]."' where toyr_skn=".strip_tags($final_array[$j][2]);
+        $sql1 = "update cl_toyr_articles set toyr_nom = '".str_replace("'","''",$final_array[$j][7])."' , toyr_longue_description = '".str_replace("'","''",$final_array[$j][8])."', toyr_mots = '".str_replace("'","''",$final_array[$j][9])."' where toyr_skn=".strip_tags($final_array[$j][2]);
         //echo $sql1;exit;
         $dbfunctions->mysql_qry($sql1,1); 
         $finalData = array();
