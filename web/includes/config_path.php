@@ -735,6 +735,13 @@ define("GARNIER_DATA_PATH", GARNIER_PATH."/data");
 define("GARNIER_IMAGE_PATH", ROOT_PATH."/CLIENTS/Garnier");
 define("GARNIER_URL", SITE_URL."/excel-devs/garnier");
 
+//MINELLI
+define("MINELLI_PATH", ROOT_PATH."/excel-devs/minelli");
+define("MINELLI_WRITER_FILE_PATH", MINELLI_PATH."/writer-files");
+define("MINELLI_UPLOAD_FILE_PATH", MINELLI_PATH."/uploads");
+define("MINELLI_DATA_PATH", MINELLI_PATH."/data");
+define("MINELLI_IMAGE_PATH", ROOT_PATH."/CLIENTS/MINELLI");
+define("MINELLI_URL", SITE_URL."/excel-devs/minelli");
 //COLUMBIA
 define("COLUMBIA_URL", SITE_URL."/excel-devs/columbia");
 define("COLUMBIA_PATH", ROOT_PATH."/excel-devs/columbia");

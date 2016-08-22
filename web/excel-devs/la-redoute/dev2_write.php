@@ -101,7 +101,6 @@ if(isset($_POST['submit']))
 				$dummy_array = process_xmlData(readDocx($docx));
         $sheet_3_array = array();
         $other_data = array();
-        //echo "<pre>"; print_r($dummy_array);exit;
 				for($i=1;$i<=sizeof($dummy_array);$i++)
         {
         	if($i==1)
@@ -116,8 +115,8 @@ if(isset($_POST['submit']))
           }
         }
         
-      // echo "<pre>"; print_r($final_array[$j]);
-        $edito = "<h2>".str_replace("'","''",toLink(strip_tags($final_array[$j][6])))."</h2>".str_replace("'","''",toLink(trim($final_array[$j][7])));
+      //echo "<pre>"; print_r($final_array[$j]);
+        $edito = "<h2>".str_replace("'","''",toLink(strip_tags($final_array[$j][6])))."</h2>".str_replace("'","''",toLink(paragraph(trim($final_array[$j][7]))));
 		//echo $edito;exit;
         //echo html_entity_decode($edito);exit;
         $sql1 = "UPDATE  cl_laredoute_articles  
@@ -134,6 +133,7 @@ if(isset($_POST['submit']))
           $finalData = array();
           $finalData[] = (!empty($other_data))?$other_data['laredoute_article_id']:'ERROR';
           $finalData[] = (!empty($other_data))?$other_data['laredoute_keywords']:strip_tags($final_array[$j][2]);
+          //$finalData[] = (!empty($other_data))?$other_data['laredoute_keywords']:modify_header(strip_tags($final_array[$j[2]]));
           $finalData[] = (!empty($other_data))?$other_data['laredoute_url']:strip_tags($final_array[$j][3]);
           $finalData[] = toLink(strip_tags($final_array[$j][4]));
           $finalData[] = toLink(strip_tags($final_array[$j][5]));
@@ -146,7 +146,7 @@ if(isset($_POST['submit']))
      	
      }
 			
-		//	echo "<pre>";print_r($newFinalArray); exit;
+			//echo "<pre>";print_r($newFinalArray); exit;
 
       $rand="laredout-delivery-".uniqid()."-".date('d-m-y-h-m');
     	$srcPath=LA_REDOUTE_WRITER_FILE_PATH."/dev2/".$rand."/";
@@ -172,6 +172,8 @@ if(isset($_POST['submit']))
 else
     header("Location:dev2.php");
 
+
+
   /*
     To convert [click here,link] to Actual link
 
@@ -180,13 +182,13 @@ else
     function toLink($val)
     {
       //$val=preg_replace('/(\*\*)(.[^*]+)(\*\*)/', "<b>$2</b>", $val);
-  //     $val=preg_replace('/(\*\*)(.[^*]+)(\*\*)/', "<strong>$2</strong>", $val);
+      $val=preg_replace('/(\*\*)(.[^*]+)(\*\*)/', "<strong>$2</strong>", $val);
   //     $val=preg_replace('/(\*)(.[^*]+)(\*)/', "<i>$2</i>", $val);
   //    // preg_match("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/",$val,$match);
 		// //echo "<pre>"; print_r($match);
 		// //echo "START".trim($match[3])."END<br>";
-  //     //$val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href='$3'>$2</a>" , $val);
-  //     //$val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href=".utf8_decode("«$3»")." >$2</a>" , $val);
+       $val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href='$3'>$2</a>" , $val);
+    //$val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href=".utf8_decode("«$3»")." >$2</a>" , $val);
 	 //  $val=preg_replace("/(\[(.[^\]\]]+),(.[^\[\]]+)\])/", "<a href=«##".trim('$3')."##»>$2</a>" , $val);
 	 //  $val=str_replace("## ","",$val);
 	 //  $val=str_replace(" ##","",$val);
