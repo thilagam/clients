@@ -36,7 +36,7 @@ include_once(INCLUDE_PATH."/left-menu.php");
             {
             ?>
                 <div class="alert alert-success">
-                    <strong>Writer File successfully generated! <a href="dev2.php?action=download&file=<?=$_REQUEST['file']?>&folder=<?=$_REQUEST['folder']?>">Click here to download</a><strong>
+                    <strong>Writer File successfully generated! <a href="dev2_process.php?action=download&file=<?=$_REQUEST['file']?>&folder=<?=$_REQUEST['folder']?>">Click here to download</a><strong>
                 </div>
             <?  
             }   

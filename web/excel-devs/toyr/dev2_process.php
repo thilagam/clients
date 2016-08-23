@@ -88,7 +88,7 @@ if(isset($_POST['submit']))
 			}
       $docx_files = all_docx_files($unzip_dir);
       
-			$final_array = array(array("SKN","UID"," PID","URL","MARQUE PROPRE ?","NOM DE L'ARTICLE","LONGUE DESCRIPTION(PRODUITS : 100 mots environ | PAGE : 200 mots environ)","MOTS CLEFS(7 mots clefs séparés par un point virgule sans espaces)"));
+			$final_array = array(array("SKN","UID","PID","URL","MARQUE PROPRE ?","NOM DE L'ARTICLE","LONGUE DESCRIPTION(PRODUITS : 100 mots environ | PAGE : 200 mots environ)","MOTS CLEFS(7 mots clefs séparés par un point virgule sans espaces)"));
 
 
       $j=1; 
@@ -118,22 +118,25 @@ if(isset($_POST['submit']))
           }
         }
         
-        //echo "<pre>"; print_r($final_array[$j]);exit;
-       
-		//echo $edito;exit;
+        //echo "<pre>";print_r($final_array);
+        //echo "<br>";echo toLink($final_array[$j][8]);
+        //exit;
         //echo html_entity_decode($edito);exit;
-        $sql1 = "update cl_toyr_articles set toyr_nom = '".str_replace("'","''",$final_array[$j][7])."' , toyr_longue_description = '".str_replace("'","''",$final_array[$j][8])."', toyr_mots = '".str_replace("'","''",$final_array[$j][9])."' where toyr_skn=".strip_tags($final_array[$j][2]);
+        $nom = toLink(paragraph($final_array[$j][7]));
+        $longue = toLink(paragraph($final_array[$j][8]));
+        $mots = toLink(paragraph($final_array[$j][9]));
+        $sql1 = "update cl_toyr_articles set toyr_nom = '".str_replace("'","''",$nom)."' , toyr_longue_description = '".str_replace("'","''",$longue)."', toyr_mots = '".str_replace("'","''",$longue)."' where toyr_skn=".strip_tags($final_array[$j][2]);
         //echo $sql1;exit;
         $dbfunctions->mysql_qry($sql1,1); 
         $finalData = array();
         $finalData[] = (!empty($other_data))?$other_data['toyr_skn']:strip_tags($final_array[$j][2]);
-        $finalData[] = (!empty($other_data))?$other_data['toyr_skn']:strip_tags($final_array[$j][3]);
-        $finalData[] = (!empty($other_data))?$other_data['toyr_skn']:strip_tags($final_array[$j][4]);
-        $finalData[] = (!empty($other_data))?$other_data['toyr_skn']:strip_tags($final_array[$j][5]); 
-        $finalData[] = (!empty($other_data))?$other_data['toyr_skn']:strip_tags($final_array[$j][6]);
-        $finalData[] = (!empty($other_data))?$other_data['toyr_skn']:strip_tags($final_array[$j][7]);
-        $finalData[] = (!empty($other_data))?$other_data['toyr_skn']:strip_tags($final_array[$j][8]);
-        $finalData[] = (!empty($other_data))?$other_data['toyr_skn']:strip_tags($final_array[$j][9]); 
+        $finalData[] = (!empty($other_data))?$other_data['toyr_uid']:strip_tags($final_array[$j][3]);
+        $finalData[] = (!empty($other_data))?$other_data['toyr_pid']:strip_tags($final_array[$j][4]);
+        $finalData[] = (!empty($other_data))?$other_data['toyr_url']:strip_tags($final_array[$j][5]); 
+        $finalData[] = (!empty($other_data))?$other_data['toyr_marque']:strip_tags($final_array[$j][6]);
+        $finalData[] = (!empty($other_data))?$other_data['toyr_nom']:$nom;
+        $finalData[] = (!empty($other_data))?$other_data['toyr_longue_description']:$longue;
+        $finalData[] = (!empty($other_data))?$other_data['toyr_mots']:$mots; 
         
         $newFinalArray[$j]=$finalData;
         $j++;
@@ -311,7 +314,8 @@ function paragraph($text)
         $value=strip_tags($value);
         if($value!=''){
           //$val .= "<p>".$value."</p>";
-          $val .= $val."</br>";
+          $val .= $value."<br />";
+          
         }
       }
     }
@@ -320,9 +324,11 @@ function paragraph($text)
       $val=strip_tags($text);
       $val=rtrim($val,']');
       //$val .= "<p>".$val."</p>";
-      $val .= $val."</br>";
+      $val .= $val."<br />";
+      
     }
     //echo "STR<br>".$val;
+
     $val = str_replace("|||||","]",$val);
     $val = str_replace("||||","[",$val);
     //exit;
