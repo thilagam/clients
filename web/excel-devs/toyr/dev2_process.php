@@ -87,15 +87,14 @@ if(isset($_POST['submit']))
 				$unzip_dir = unzipfolder($srcFile);
 			}
       $docx_files = all_docx_files($unzip_dir);
+      $mot = read_docx_special_character_function("MOTS CLEFS(7 mots clefs séparés par un point virgule sans espaces)");
       
-			$final_array = array(array("SKN","UID","PID","URL","MARQUE PROPRE ?","NOM DE L'ARTICLE","LONGUE DESCRIPTION(PRODUITS : 100 mots environ | PAGE : 200 mots environ)","MOTS CLEFS(7 mots clefs séparés par un point virgule sans espaces)"));
-
+			$final_array = array(array("SKN","UID","PID","URL","MARQUE PROPRE ?","NOM DE L'ARTICLE","LONGUE DESCRIPTION(PRODUITS : 100 mots environ | PAGE : 200 mots environ)",$mot));
 
       $j=1; 
 			$check_empty = "";
 						
-			$newFinalArray=array(array("SKN","UID"," PID","URL","MARQUE PROPRE ?","NOM DE L'ARTICLE","LONGUE DESCRIPTION(PRODUITS : 100 mots environ | PAGE : 200 mots environ)","MOTS CLEFS(7 mots clefs séparés par un point virgule sans espaces)"));
-
+			$newFinalArray=array(array("SKN","UID"," PID","URL","MARQUE PROPRE ?","NOM DE L'ARTICLE","LONGUE DESCRIPTION(PRODUITS : 100 mots environ | PAGE : 200 mots environ)",$mot));
 
       foreach($docx_files as $lkey=>$docx)
       {
