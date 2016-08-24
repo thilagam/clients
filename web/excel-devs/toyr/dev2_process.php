@@ -314,7 +314,7 @@ function paragraph($text)
         $value=strip_tags($value);
         if($value!=''){
           //$val .= "<p>".$value."</p>";
-          $val .= $value."<br />";
+          $val .= $value."<br>";
           
         }
       }
@@ -324,7 +324,7 @@ function paragraph($text)
       $val=strip_tags($text);
       $val=rtrim($val,']');
       //$val .= "<p>".$val."</p>";
-      $val .= $val."<br />";
+      $val .= $val."<br>";
       
     }
     //echo "STR<br>".$val;
